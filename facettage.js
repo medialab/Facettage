@@ -1,0 +1,340 @@
+'use strict';
+
+var Facettage = (()=>{
+  
+  // Namespace
+  let ns = {};
+
+  // Properties
+  ns.facetDictionary = {};
+  // TODO: implement a config setting for cache location
+  ns.cacheLocation = 'data/cache/'
+
+  ns.getFacetList = function () {
+    let result = [];
+
+    for (let i in ns.facetDictionary) {
+      result.push( ns.facetDictionary[i] );
+    }
+
+    return result;
+  }
+
+  ns.requireFacet = function (id, opts_) {
+    let f = ns.getFacet(id);
+    if (f) return f;
+    return ns.newFacet(id, opts_);
+  }
+
+  ns.getFacet = function (id) {
+    return ns.facetDictionary[id];
+  }
+
+  /**
+   * Valid ways of creating a facet:
+   *
+   * A. With the data itself:
+   *    newFacet('jedi', {data:{name:'Anakin Skywalker'}})
+   *
+   * B. With a cache:
+   *    newFacet('jedi', {cached:true})
+   *    Note: you have to ensure that the cached file is
+   *          actually at the proper location
+   *
+   * C. With a compute method involving no dependency:
+   *    newFacet('jedi', {compute:function(){return {name:'Anakin Skywalker'}}})
+   *
+   * D. With a compute method involving dependencies:
+   *    newFacet('jediLastName', {
+   *      dependencies:['jedi'],
+   *      compute: function(){
+   *        return getFacet('jedi').getData().name.split(' ')[1]
+   *      }
+   *    })
+   */
+  ns.newFacet = function (id, opts_) {
+    const opts = opts_ || {};
+    let facet = {};
+
+    if (id) {
+      if (ns.facetDictionary[id] === undefined) {
+        /**
+         * Facet lifecycle:
+         * 1. Is it ready? YES: get the data. NO: go deeper.
+         * 2. Is it cached? YES: load the data. NO: go deeper.
+         * 3. Are dependencies ready? YES: compute the data.
+         *    NO: Get the dependencies, then compute the data.
+         *
+         * NOTE: Loadability, compute method and dependencies have to be managed elsewhere.
+         *       The facet object is just a helper to organize the lifecycle.
+         */
+        if (opts.data === undefined && !opts.cached && (opts.compute === undefined || typeof opts.compute !== 'function') ) {
+          console.log(`Impossible to create facet without data OR cache OR a compute method. id:${id}`, facet);
+          return;
+        }
+        facet.id = id;
+        facet.data = undefined;
+        facet.serialize = x => x;
+        facet.unserialize = x => x;
+        facet.formatSerialize = undefined;
+        facet.formatUnserialize = undefined;
+        facet.ready = false;
+        facet.cached = false;
+        facet.uncacheable = false;
+        facet.ephemeral = false;
+        facet.dependencies = [];
+        facet._compute = opts.compute;
+        facet.dataFormat = 'json';
+
+        // Check and apply options
+        if (opts.cached) { facet.cached = true; }
+        if (opts.uncacheable) { facet.uncacheable = true; }
+        if (opts.ephemeral) { facet.ephemeral = true; }
+
+        if (opts.dependencies) {
+          if (Array.isArray(opts.dependencies)) {
+            facet.dependencies = opts.dependencies;
+          } else {
+            console.log(`Dependencies not added because they are not an array. Facet id:${id}`, facet);
+          }
+        }
+
+        if (!Array.isArray(facet.dependencies)) {
+          console.log(`Impossible to create facet because dependencies are not an array. id:${id}`, facet);
+          return;
+        }
+
+        if (opts.data !== undefined) {
+          facet.data = opts.data;
+          facet.ready = true;
+        }
+
+        if (opts.dataFormat) {
+          switch (opts.dataFormat) {
+            case 'json':
+              facet.formatUnserialize = JSON.parse;
+              facet.formatSerialize = JSON.stringify;
+              break;
+            case 'csv':
+              facet.formatUnserialize = d3.csv.parse;
+              facet.formatSerialize = d3.csv.format;
+              break;
+            case 'csvRows':
+              facet.formatUnserialize = d3.csv.parseRows;
+              facet.formatSerialize = d3.csv.formatRows;
+              break;
+            default:
+              console.log(`Unknown dataFormat ${opts.dataFormat} for facet ${id}`)
+              break;
+          }
+        } else {
+          facet.formatUnserialize = JSON.parse;
+          facet.formatSerialize = JSON.stringify;
+        }
+
+        if (opts.serialize) {
+          facet.serialize = opts.serialize
+        }
+
+        if (opts.unserialize) {
+          facet.unserialize = opts.unserialize
+        }
+        
+        facet.isReady = () => facet.ready;
+        facet.isCached = () => !!facet.cached;
+        facet.isUncacheable = () => !!facet.uncacheable;
+        facet.getDependencies = () => facet.dependencies;
+
+        facet.retrieveData = function (callback) {
+          ns.clearEphemeralFacets();
+          if (facet.isReady()) {
+            console.log(`retrieve data: CALL ${facet.id}`);
+            facet.callData(callback);
+          } else if (facet.isCached()) {
+            console.log(`retrieve data: LOAD ${facet.id}`);
+            facet.loadData(callback, {computeAtFail: true});
+          } else if (facet.areDependenciesReady()) {
+            console.log(`retrieve data: COMPUTE ${facet.id}`);
+            facet.computeData(callback);
+          } else {
+            let unreadyDependency = facet.dependencies.some(id => {
+              let dependencyFacet = ns.getFacet(id);
+              if (dependencyFacet && dependencyFacet.isReady && dependencyFacet.isReady()) {
+                // Dependency is OK
+                return false;
+              } else {
+                // Dependency needs to be retrieved
+                console.log(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`);
+                dependencyFacet.retrieveData(() => {
+                  facet.retrieveData(callback);
+                })
+                return true;
+              }
+            })
+          }
+        }
+
+        facet.getData = function () {
+          ns.clearEphemeralFacets();
+          if (facet.isReady()) {
+            return facet.data;
+          } else {
+            console.log(`Impossible to get data because this facet is not ready: ${facet.id}`, facet);
+          }
+        }
+
+        facet.clear = function () {
+          console.log(`Clear data of ${facet.id}`);
+          facet.ready = false;
+          facet.data = undefined;
+        }
+
+        facet.clearDependencies = function () {
+          ns.clearEphemeralFacets();
+          console.log(`Clear data dependencies of ${facet.id}`);
+          facet.dependencies.forEach(id => {
+            let dependencyFacet = ns.getFacet(id);
+            dependencyFacet.clear();
+            dependencyFacet.clearDependencies();
+          })
+        }
+
+        // Like getData but in an asynchronous fashion
+        facet.callData = function (callback) {
+          ns.clearEphemeralFacets();
+          if (facet.isReady()) {
+            callback(facet.data);
+          } else {
+            console.log(`Impossible to call data because this facet is not ready: ${facet.id}`, facet);
+          }
+        }
+
+        facet.loadData = function (callback, opts) {
+          ns.clearEphemeralFacets();
+          if (facet.isCached()) {
+            let url = ns.getFacetCacheURL(facet.id);
+            $.get(url, function(d){
+              facet.data = facet.unserialize(facet.formatUnserialize(d));
+              facet.ready = true;
+              callback(facet.data);
+            }).fail(function() {
+                console.log(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, facet);
+                if (opts && opts.computeAtFail) {
+                  console.log('-> Now trying to compute.');
+                  facet.computeData(callback, {withDependencies: true});
+                }
+              })
+          } else {
+            console.log(`Unloadable facet: ${id}`, facet);
+          }
+        }
+
+        facet.areDependenciesReady = function () {
+          let ready = true
+          // FIXME: stop the forEach once one false found
+          facet.dependencies.forEach(id => {
+            let dependencyFacet = ns.getFacet(id);
+            if (dependencyFacet && dependencyFacet.isReady && dependencyFacet.isReady()) {
+              // Dependency is OK
+            } else {
+              ready = false;
+            }
+          })
+          return ready;
+        }
+
+        facet.computeData = function (callback, opts) {
+          ns.clearEphemeralFacets();
+          if (facet.areDependenciesReady()) {
+            facet.data = facet._compute();
+            facet.ready = true;
+            callback(facet.data);
+          } else if (opts && opts.withDependencies) {
+            let unreadyDependency = facet.dependencies.some(id => {
+              let dependencyFacet = ns.getFacet(id);
+              if (dependencyFacet && dependencyFacet.isReady && dependencyFacet.isReady()) {
+                // Dependency is OK
+                return false;
+              } else {
+                // Dependency needs to be retrieved
+                console.log(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`);
+                dependencyFacet.retrieveData(() => {
+                  facet.retrieveData(callback);
+                })
+                return true;
+              }
+            })
+          } else {
+            console.log(`Facet not computed because dependencies are not ready. id: ${id}`, facet);
+          }
+        }
+
+        facet.download = function () {
+          let data = facet.formatSerialize(facet.serialize(facet.data));
+          let blob = new Blob([data], {type: "application/text;charset=utf-8"});
+          saveAs(blob, ns.getFacetCacheName(facet.id));
+        }
+
+        ns.facetDictionary[facet.id] = facet;
+        return facet;
+      } else {
+        console.log(`Facet not created because its id already exists: ${id}`, facet);
+      }
+    } else {
+      console.log('Facet not created because it has no id', facet);
+    }
+  }
+
+  ns.deleteFacet = function (id) {
+    delete ns.facetDictionary[id];
+  }
+
+  ns.getFacetCacheURL = function (d) {
+    let id;
+    if (typeof d == 'object' && d[id]) {
+      // d is the facet (though it should be the id...)
+      id = d[id];
+    } else {
+      id = d;
+    }
+
+    if (typeof id === 'string') {
+      let safeId = ns.getFacetCacheName(id);
+      return `${ns.cacheLocation}${safeId}`;
+    } else {
+      console.log(`Cannot retrieve cache URL from id ${id}`, facet);
+    }
+  }
+
+  ns.getFacetCacheName = function (id) {
+    return encodeURIComponent(id);
+  }
+
+  ns.clearEphemeralFacets = function () {
+    ns.getFacetList().forEach(facet => {
+      if (facet.ephemeral) {
+        // delete
+        facet.clear();
+        ns.deleteFacet(facet.id);
+      }
+    });
+  }
+
+  window._FacetFactory_downloadCacheables = function () {
+    ns.getFacetList().forEach(facet => {
+      if (facet.isReady() && !facet.isCached() && !facet.isUncacheable()) {
+        // Keep facet
+      } else {
+        // delete
+        facet.clear();
+        ns.deleteFacet(facet.id);
+      }
+    });
+    ns.getFacetList().forEach(facet => {
+      console.log(`Download cacheable facet ${facet.id}`)
+      facet.download()
+    })
+  }
+
+  return ns;
+})();
