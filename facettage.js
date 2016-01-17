@@ -320,7 +320,7 @@ var Facettage = (()=>{
     });
   }
 
-  window._FacetFactory_downloadCacheables = function () {
+  ns.downloadCacheables = function () {
     ns.getFacetList().forEach(facet => {
       if (facet.isReady() && !facet.isCached() && !facet.isUncacheable()) {
         // Keep facet
