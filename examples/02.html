@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="index.html">Facettage.js examples</a>
+  </header>
+
+  <section>
+    <h1>02 - Facet formats</h1>
+  </section>
+
+  <article>
+    <h3>Load data from cache</h3>
+    <br>
+    <button onClick="loadMovies_csv()">LOAD MOVIES AS CSV</button>
+    <br>
+    <div id="movies_csv"></div>
+  </article>
+
+<script type="text/javascript">
+
+// Create facet
+var movies_facet_csv = Facettage.newFacet('movies.csv', {
+  cached: true,
+  // Parse the file as a CSV
+  type: 'csv'
+});
+
+// Retrieve data
+function loadMovies_csv () {
+  movies_facet_csv.retrieveData( function (data) {
+    document.querySelector('#movies_csv').textContent = data
+  });
+}
+
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      Load the same <a href="data/cache/movies.csv">file</a> as in example 01 then display it in a HTML element.
+    </p>
+    <p>
+      Its <strong>'type'</strong> attribute is now <strong>'csv'</strong>. Parsed as a CSV it appears as a list of objects. <em>Facettage</em> uses the <em>D3.js</em> CSV parser.
+    </p>
+    <p>
+      Other types you may use:
+      <ul>
+        <li>json</li>
+        <li>tsv</li>
+        <li>csvRows</li>
+      </ul>
+    </p>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="01.html">&lt; 01 Basics</a> | <a href="index.html">Examples list</a> | <a href="03.html">03 &gt;</a>
+</footer>
+
+</body>
+
+</html>
