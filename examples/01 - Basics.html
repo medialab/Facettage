@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    Facettage.js examples
+    <small><a href="index.html">back to list</a></small>
+  </header>
+
+  <section>
+    <h1>01 - Basics</h1>
+  </section>
+
+  <article>
+    <h3>Load data from cache</h3>
+    <br>
+    <button onClick="loadMovies()">LOAD MOVIES</button>
+    <br>
+    <div id="movies"></div>
+  </article>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      Loads this file:
+    </p>
+    <pre>examples/data/cache/movies.csv</pre>
+    <p>
+      Then displays it in a HTML element.
+    </p>
+  </aside>
+  
+</main>  
+
+<script type="text/javascript">
+
+var movies_facet = Facettage.newFacet('movies.csv', {
+  cached: true,
+  type: 'text'
+});
+
+function loadMovies () {
+  movies_facet.retrieveData( function (data) {
+    document.querySelector('#movies').textContent = data
+  });
+}
+
+</script>
+
+</body>
+
+</html>

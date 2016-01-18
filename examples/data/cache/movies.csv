@@ -1,0 +1,1001 @@
+Rank,Title,Year,Rating
+1,The Shawshank Redemption    ,1994, 9.3/10 
+2,The Godfather    ,1972, 9.2/10 
+3,The Godfather: Part II    ,1974, 9.0/10 
+4,The Dark Knight    ,2008, 9.0/10 
+5,12 Angry Men    ,1957, 8.9/10 
+6,Pulp Fiction    ,1994, 8.9/10 
+7,Schindler's List    ,1993, 8.9/10 
+8,The Lord of the Rings: The Return of the King    ,2003, 8.9/10 
+9,"The Good, the Bad and the Ugly    ",1966, 8.9/10 
+10,Fight Club    ,1999, 8.9/10 
+11,The Lord of the Rings: The Fellowship of the Ring    ,2001, 8.8/10 
+12,Inception    ,2010, 8.8/10 
+13,Star Wars: Episode V - The Empire Strikes Back    ,1980, 8.8/10 
+14,Forrest Gump    ,1994, 8.8/10 
+15,The Lord of the Rings: The Two Towers    ,2002, 8.7/10 
+16,One Flew Over the Cuckoo's Nest    ,1975, 8.7/10 
+17,Goodfellas    ,1990, 8.7/10 
+18,Seven Samurai    ,1954, 8.7/10 
+19,The Matrix    ,1999, 8.7/10 
+20,Star Wars    ,1977, 8.7/10 
+21,City of God    ,2002, 8.7/10 
+22,Baahubali: The Beginning    ,2015, 8.6/10 
+23,It's a Wonderful Life    ,1946, 8.6/10 
+24,Interstellar    ,2014, 8.6/10 
+25,Se7en    ,1995, 8.6/10 
+26,The Usual Suspects    ,1995, 8.6/10 
+27,Life Is Beautiful    ,1997, 8.6/10 
+28,The Silence of the Lambs    ,1991, 8.6/10 
+29,Once Upon a Time in the West    ,1968, 8.6/10 
+30,Léon: The Professional    ,1994, 8.6/10 
+31,City Lights    ,1931, 8.6/10 
+32,Spirited Away    ,2001, 8.6/10 
+33,The Intouchables    ,2011, 8.6/10 
+34,Casablanca    ,1942, 8.6/10 
+35,Saving Private Ryan    ,1998, 8.6/10 
+36,American History X    ,1998, 8.6/10 
+37,Modern Times    ,1936, 8.6/10 
+38,Raiders of the Lost Ark    ,1981, 8.5/10 
+39,Psycho    ,1960, 8.5/10 
+40,Rear Window    ,1954, 8.5/10 
+41,The Green Mile    ,1999, 8.5/10 
+42,Whiplash    ,2014, 8.5/10 
+43,The Pianist    ,2002, 8.5/10 
+44,Terminator 2: Judgment Day    ,1991, 8.5/10 
+45,The Departed    ,2006, 8.5/10 
+46,Gladiator    ,2000, 8.5/10 
+47,Sholay    ,1975, 8.5/10 
+48,Back to the Future    ,1985, 8.5/10 
+49,Sunset Blvd.    ,1950, 8.5/10 
+50,Memento    ,2000, 8.5/10 
+51,Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb    ,1964, 8.5/10 
+52,The Prestige    ,2006, 8.5/10 
+53,Apocalypse Now    ,1979, 8.5/10 
+54,Cinema Paradiso    ,1988, 8.5/10 
+55,The Dark Knight Rises    ,2012, 8.5/10 
+56,The Great Dictator    ,1940, 8.5/10 
+57,The Lion King    ,1994, 8.5/10 
+58,The Lives of Others    ,2006, 8.5/10 
+59,Alien    ,1979, 8.5/10 
+60,Paths of Glory    ,1957, 8.5/10 
+61,Grave of the Fireflies    ,1988, 8.5/10 
+62,Django Unchained    ,2012, 8.5/10 
+63,Star Wars: The Force Awakens    ,2015, 8.5/10 
+64,3 Idiots    ,2009, 8.4/10 
+65,The Shining    ,1980, 8.4/10 
+66,Witness for the Prosecution    ,1957, 8.4/10 
+67,WALL·E    ,2008, 8.4/10 
+68,Princess Mononoke    ,1997, 8.4/10 
+69,Das Boot    ,1981, 8.4/10 
+70,M    ,1931, 8.4/10 
+71,American Beauty    ,1999, 8.4/10 
+72,Queen    ,2014, 8.4/10 
+73,Once Upon a Time in America    ,1984, 8.4/10 
+74,Aliens    ,1986, 8.4/10 
+75,Oldboy    ,2003, 8.4/10 
+76,Citizen Kane    ,1941, 8.4/10 
+77,North by Northwest    ,1959, 8.4/10 
+78,A Separation    ,2011, 8.4/10 
+79,Amélie    ,2001, 8.4/10 
+80,Vertigo    ,1958, 8.4/10 
+81,Double Indemnity    ,1944, 8.4/10 
+82,Star Wars: Episode VI - Return of the Jedi    ,1983, 8.4/10 
+83,Braveheart    ,1995, 8.4/10 
+84,Requiem for a Dream    ,2000, 8.4/10 
+85,To Kill a Mockingbird    ,1962, 8.4/10 
+86,Lawrence of Arabia    ,1962, 8.4/10 
+87,Sunrise    ,1927, 8.4/10 
+88,A Clockwork Orange    ,1971, 8.4/10 
+89,Reservoir Dogs    ,1992, 8.4/10 
+90,Toy Story 3    ,2010, 8.4/10 
+91,The Kid    ,1921, 8.4/10 
+92,Bicycle Thieves    ,1948, 8.4/10 
+93,Chakde! India    ,2007, 8.4/10 
+94,Eternal Sunshine of the Spotless Mind    ,2004, 8.4/10 
+95,Taxi Driver    ,1976, 8.4/10 
+96,Singin' in the Rain    ,1952, 8.3/10 
+97,Bhaag Milkha Bhaag    ,2013, 8.3/10 
+98,The Sting    ,1973, 8.3/10 
+99,Amadeus    ,1984, 8.3/10 
+100,All About Eve    ,1950, 8.3/10 
+101,Yojimbo    ,1961, 8.3/10 
+102,The Revenant    ,2015, 8.3/10 
+103,Gangs of Wasseypur    ,2012, 8.3/10 
+104,Rashomon    ,1950, 8.3/10 
+105,Inside Out    ,2015, 8.3/10 
+106,Full Metal Jacket    ,1987, 8.3/10 
+107,Monty Python and the Holy Grail    ,1975, 8.3/10 
+108,The Treasure of the Sierra Madre    ,1948, 8.3/10 
+109,2001: A Space Odyssey    ,1968, 8.3/10 
+110,The Apartment    ,1960, 8.3/10 
+111,Snatch.    ,2000, 8.3/10 
+112,Ikiru    ,1952, 8.3/10 
+113,Metropolis    ,1927, 8.3/10 
+114,Haider    ,2014, 8.3/10 
+115,For a Few Dollars More    ,1965, 8.3/10 
+116,The Third Man    ,1949, 8.3/10 
+117,Inglourious Basterds    ,2009, 8.3/10 
+118,Scarface    ,1983, 8.3/10 
+119,Toy Story    ,1995, 8.3/10 
+120,Some Like It Hot    ,1959, 8.3/10 
+121,L.A. Confidential    ,1997, 8.3/10 
+122,Swades    ,2004, 8.3/10 
+123,Batman Begins    ,2005, 8.3/10 
+124,The Hunt    ,2012, 8.3/10 
+125,Dilwale Dulhania Le Jayenge    ,1995, 8.3/10 
+126,PK    ,2014, 8.3/10 
+127,Indiana Jones and the Last Crusade    ,1989, 8.3/10 
+128,Unforgiven    ,1992, 8.3/10 
+129,Up    ,2009, 8.3/10 
+130,Mr. Smith Goes to Washington    ,1939, 8.3/10 
+131,Downfall    ,2004, 8.3/10 
+132,On the Waterfront    ,1954, 8.3/10 
+133,Raging Bull    ,1980, 8.3/10 
+134,Good Will Hunting    ,1997, 8.3/10 
+135,The Great Escape    ,1963, 8.3/10 
+136,Ran    ,1985, 8.3/10 
+137,The Gold Rush    ,1925, 8.3/10 
+138,The General    ,1926, 8.3/10 
+139,My Neighbor Totoro    ,1988, 8.3/10 
+140,Wild Strawberries    ,1957, 8.3/10 
+141,Chinatown    ,1974, 8.3/10 
+142,Judgment at Nuremberg    ,1961, 8.3/10 
+143,Heat    ,1995, 8.3/10 
+144,Kahaani    ,2012, 8.2/10 
+145,Die Hard    ,1988, 8.2/10 
+146,The Seventh Seal    ,1957, 8.2/10 
+147,The Secret in Their Eyes    ,2009, 8.2/10 
+148,Pan's Labyrinth    ,2006, 8.2/10 
+149,The Bridge on the River Kwai    ,1957, 8.2/10 
+150,Howl's Moving Castle    ,2004, 8.2/10 
+151,Blade Runner    ,1982, 8.2/10 
+152,Warrior    ,2011, 8.2/10 
+153,Incendies    ,2010, 8.2/10 
+154,The Wages of Fear    ,1953, 8.2/10 
+155,"Lock, Stock and Two Smoking Barrels    ",1998, 8.2/10 
+156,The Wolf of Wall Street    ,2013, 8.2/10 
+157,The Elephant Man    ,1980, 8.2/10 
+158,V for Vendetta    ,2005, 8.2/10 
+159,Rebecca    ,1940, 8.2/10 
+160,Barfi!    ,2012, 8.2/10 
+161,It Happened One Night    ,1934, 8.2/10 
+162,Casino    ,1995, 8.2/10 
+163,Gone with the Wind    ,1939, 8.2/10 
+164,The Big Lebowski    ,1998, 8.2/10 
+165,Cool Hand Luke    ,1967, 8.2/10 
+166,A Beautiful Mind    ,2001, 8.2/10 
+167,How to Train Your Dragon    ,2010, 8.2/10 
+168,Gran Torino    ,2008, 8.2/10 
+169,Mad Max: Fury Road    ,2015, 8.2/10 
+170,Mary and Max    ,2009, 8.2/10 
+171,Dial M for Murder    ,1954, 8.2/10 
+172,Lagaan: Once Upon a Time in India    ,2001, 8.2/10 
+173,The Deer Hunter    ,1978, 8.2/10 
+174,Into the Wild    ,2007, 8.2/10 
+175,Bajrangi Bhaijaan    ,2015, 8.2/10 
+176,Trainspotting    ,1996, 8.2/10 
+177,My Sassy Girl    ,2001, 8.2/10 
+178,The Best Years of Our Lives    ,1946, 8.2/10 
+179,Rush    ,2013, 8.2/10 
+180,Persona    ,1966, 8.2/10 
+181,The Maltese Falcon    ,1941, 8.2/10 
+182,Hachi: A Dog's Tale    ,2009, 8.2/10 
+183,The 400 Blows    ,1959, 8.2/10 
+184,Fargo    ,1996, 8.2/10 
+185,Stalker    ,1979, 8.2/10 
+186,Wild Tales    ,2014, 8.2/10 
+187,The Thing    ,1982, 8.2/10 
+188,Gone Girl    ,2014, 8.2/10 
+189,Finding Nemo    ,2003, 8.1/10 
+190,The Sixth Sense    ,1999, 8.1/10 
+191,Tae Guk Gi: The Brotherhood of War    ,2004, 8.1/10 
+192,Diabolique    ,1955, 8.1/10 
+193,Network    ,1976, 8.1/10 
+194,The Battle of Algiers    ,1966, 8.1/10 
+195,Throne of Blood    ,1957, 8.1/10 
+196,The Princess Bride    ,1987, 8.1/10 
+197,Hotel Rwanda    ,2004, 8.1/10 
+198,Life of Brian    ,1979, 8.1/10 
+199,Touch of Evil    ,1958, 8.1/10 
+200,No Country for Old Men    ,2007, 8.1/10 
+201,Underground    ,1995, 8.1/10 
+202,The Grapes of Wrath    ,1940, 8.1/10 
+203,The Legend of 1900    ,1998, 8.1/10 
+204,Butch Cassidy and the Sundance Kid    ,1969, 8.1/10 
+205,Kill Bill: Vol. 1    ,2003, 8.1/10 
+206,Nausicaä of the Valley of the Wind    ,1984, 8.1/10 
+207,"Black Cat, White Cat    ",1998, 8.1/10 
+208,Fanny and Alexander    ,1982, 8.1/10 
+209,Platoon    ,1986, 8.1/10 
+210,In the Name of the Father    ,1993, 8.1/10 
+211,There Will Be Blood    ,2007, 8.1/10 
+212,Baby    ,2015, 8.1/10 
+213,8½    ,1963, 8.1/10 
+214,The Avengers    ,2012, 8.1/10 
+215,The Martian    ,2015, 8.1/10 
+216,Stand by Me    ,1986, 8.1/10 
+217,Amores Perros    ,2000, 8.1/10 
+218,What Ever Happened to Baby Jane?    ,1962, 8.1/10 
+219,Ben-Hur    ,1959, 8.1/10 
+220,12 Years a Slave    ,2013, 8.1/10 
+221,The Last Picture Show    ,1971, 8.1/10 
+222,Zindagi Na Milegi Dobara    ,2011, 8.1/10 
+223,Le Samouraï    ,1967, 8.1/10 
+224,Laura    ,1944, 8.1/10 
+225,The Grand Budapest Hotel    ,2014, 8.1/10 
+226,Shutter Island    ,2010, 8.1/10 
+227,Annie Hall    ,1977, 8.1/10 
+228,Memories of Murder    ,2003, 8.1/10 
+229,Departures    ,2008, 8.1/10 
+230,Infernal Affairs    ,2002, 8.1/10 
+231,Harry Potter and the Deathly Hallows: Part 2    ,2011, 8.1/10 
+232,Million Dollar Baby    ,2004, 8.1/10 
+233,Chungking Express    ,1994, 8.1/10 
+234,Donnie Darko    ,2001, 8.1/10 
+235,Gandhi    ,1982, 8.1/10 
+236,Before Sunrise    ,1995, 8.1/10 
+237,La Haine    ,1995, 8.1/10 
+238,3-Iron    ,2004, 8.1/10 
+239,Cat on a Hot Tin Roof    ,1958, 8.1/10 
+240,Solaris    ,1972, 8.1/10 
+241,Barry Lyndon    ,1975, 8.1/10 
+242,"Paris, Texas    ",1984, 8.1/10 
+243,Who's Afraid of Virginia Woolf?    ,1966, 8.1/10 
+244,La Dolce Vita    ,1960, 8.1/10 
+245,Guardians of the Galaxy    ,2014, 8.1/10 
+246,La Strada    ,1954, 8.1/10 
+247,The Cabinet of Dr. Caligari    ,1920, 8.1/10 
+248,Strangers on a Train    ,1951, 8.1/10 
+249,"Spring, Summer, Fall, Winter... and Spring    ",2003, 8.1/10 
+250,Elite Squad: The Enemy Within    ,2010, 8.1/10 
+251,Sleuth    ,1972, 8.1/10 
+252,The Celebration    ,1998, 8.1/10 
+253,The Bourne Ultimatum    ,2007, 8.1/10 
+254,The Wizard of Oz    ,1939, 8.1/10 
+255,Castle in the Sky    ,1986, 8.1/10 
+256,Wings of Desire    ,1987, 8.1/10 
+257,Ip Man    ,2008, 8.1/10 
+258,Sin City    ,2005, 8.1/10 
+259,Three Colors: Red    ,1994, 8.1/10 
+260,Jurassic Park    ,1993, 8.1/10 
+261,In the Mood for Love    ,2000, 8.1/10 
+262,The Imitation Game    ,2014, 8.1/10 
+263,Roman Holiday    ,1953, 8.1/10 
+264,Elite Squad    ,2007, 8.1/10 
+265,Anatomy of a Murder    ,1959, 8.1/10 
+266,The Man Who Shot Liberty Valance    ,1962, 8.1/10 
+267,High Noon    ,1952, 8.1/10 
+268,Rocky    ,1976, 8.1/10 
+269,Notorious    ,1946, 8.1/10 
+270,The Philadelphia Story    ,1940, 8.1/10 
+271,The Help    ,2011, 8.1/10 
+272,Stalag 17    ,1953, 8.1/10 
+273,Arsenic and Old Lace    ,1944, 8.1/10 
+274,The Night of the Hunter    ,1955, 8.1/10 
+275,The Hateful Eight    ,2015, 8.1/10 
+276,Akira    ,1988, 8.1/10 
+277,The Sea Inside    ,2004, 8.1/10 
+278,Harvey    ,1950, 8.1/10 
+279,Twelve Monkeys    ,1995, 8.1/10 
+280,"Monsters, Inc.    ",2001, 8.1/10 
+281,The Big Sleep    ,1946, 8.1/10 
+282,Groundhog Day    ,1993, 8.1/10 
+283,The Hustler    ,1961, 8.1/10 
+284,A Christmas Story    ,1983, 8.1/10 
+285,The Killing    ,1956, 8.1/10 
+286,Rio Bravo    ,1959, 8.1/10 
+287,The Truman Show    ,1998, 8.1/10 
+288,The Terminator    ,1984, 8.1/10 
+289,Pirates of the Caribbean: The Curse of the Black Pearl    ,2003, 8.1/10 
+290,Straight Outta Compton    ,2015, 8.1/10 
+291,Prisoners    ,2013, 8.1/10 
+292,A Streetcar Named Desire    ,1951, 8.1/10 
+293,Jaws    ,1975, 8.1/10 
+294,All Quiet on the Western Front    ,1930, 8.1/10 
+295,Dog Day Afternoon    ,1975, 8.1/10 
+296,Dogville    ,2003, 8.1/10 
+297,Young Frankenstein    ,1974, 8.1/10 
+298,Before Sunset    ,2004, 8.0/10 
+299,A Fistful of Dollars    ,1964, 8.0/10 
+300,Kal Ho Naa Ho    ,2003, 8.0/10 
+301,The King's Speech    ,2010, 8.0/10 
+302,Papillon    ,1973, 8.0/10 
+303,X-Men: Days of Future Past    ,2014, 8.0/10 
+304,Persepolis    ,2007, 8.0/10 
+305,Sling Blade    ,1996, 8.0/10 
+306,The Diving Bell and the Butterfly    ,2007, 8.0/10 
+307,Pink Floyd The Wall    ,1982, 8.0/10 
+308,Beauty and the Beast    ,1991, 8.0/10 
+309,Creed    ,2015, 8.0/10 
+310,The Wild Bunch    ,1969, 8.0/10 
+311,Harold and Maude    ,1971, 8.0/10 
+312,His Girl Friday    ,1940, 8.0/10 
+313,The Perks of Being a Wallflower    ,2012, 8.0/10 
+314,Rope    ,1948, 8.0/10 
+315,The Manchurian Candidate    ,1962, 8.0/10 
+316,The Nightmare Before Christmas    ,1993, 8.0/10 
+317,The Graduate    ,1967, 8.0/10 
+318,East of Eden    ,1955, 8.0/10 
+319,Blood Diamond    ,2006, 8.0/10 
+320,This Is Spinal Tap    ,1984, 8.0/10 
+321,Magnolia    ,1999, 8.0/10 
+322,The Return    ,2003, 8.0/10 
+323,Big Fish    ,2003, 8.0/10 
+324,Catch Me If You Can    ,2002, 8.0/10 
+325,Patton    ,1970, 8.0/10 
+326,Duck Soup    ,1933, 8.0/10 
+327,JFK    ,1991, 8.0/10 
+328,Bringing Up Baby    ,1938, 8.0/10 
+329,Crimes and Misdemeanors    ,1989, 8.0/10 
+330,The Raid 2    ,2014, 8.0/10 
+331,The Exorcist    ,1973, 8.0/10 
+332,The Straight Story    ,1999, 8.0/10 
+333,The Big Short    ,2015, 8.0/10 
+334,"Aguirre, the Wrath of God    ",1972, 8.0/10 
+335,Dead Poets Society    ,1989, 8.0/10 
+336,Manhattan    ,1979, 8.0/10 
+337,Slumdog Millionaire    ,2008, 8.0/10 
+338,Star Trek    ,2009, 8.0/10 
+339,Rain Man    ,1988, 8.0/10 
+340,Waltz with Bashir    ,2008, 8.0/10 
+341,Jab We Met    ,2007, 8.0/10 
+342,Brazil    ,1985, 8.0/10 
+343,Talk to Her    ,2002, 8.0/10 
+344,Being There    ,1979, 8.0/10 
+345,Short Term 12    ,2013, 8.0/10 
+346,The Adventures of Robin Hood    ,1938, 8.0/10 
+347,Central Station    ,1998, 8.0/10 
+348,Nosferatu    ,1922, 8.0/10 
+349,Whisper of the Heart    ,1995, 8.0/10 
+350,Charade    ,1963, 8.0/10 
+351,Doctor Zhivago    ,1965, 8.0/10 
+352,Dances with Wolves    ,1990, 8.0/10 
+353,Ghost in the Shell    ,1995, 8.0/10 
+354,All the President's Men    ,1976, 8.0/10 
+355,Ratatouille    ,2007, 8.0/10 
+356,Cinderella Man    ,2005, 8.0/10 
+357,Dawn of the Dead    ,1978, 8.0/10 
+358,Battleship Potemkin    ,1925, 8.0/10 
+359,In the Heat of the Night    ,1967, 8.0/10 
+360,Dancer in the Dark    ,2000, 8.0/10 
+361,Aladdin    ,1992, 8.0/10 
+362,The Searchers    ,1956, 8.0/10 
+363,Secrets & Lies    ,1996, 8.0/10 
+364,Black Swan    ,2010, 8.0/10 
+365,Her    ,2013, 8.0/10 
+366,No Man's Land    ,2001, 8.0/10 
+367,The Sound of Music    ,1965, 8.0/10 
+368,Kill Bill: Vol. 2    ,2004, 8.0/10 
+369,Shadow of a Doubt    ,1943, 8.0/10 
+370,Dallas Buyers Club    ,2013, 8.0/10 
+371,Boyhood    ,2014, 8.0/10 
+372,Days of Heaven    ,1978, 8.0/10 
+373,C.R.A.Z.Y.    ,2005, 8.0/10 
+374,Fiddler on the Roof    ,1971, 8.0/10 
+375,Special 26    ,2013, 8.0/10 
+376,Head-On    ,2004, 8.0/10 
+377,Casino Royale    ,2006, 8.0/10 
+378,District 9    ,2009, 8.0/10 
+379,The Iron Giant    ,1999, 8.0/10 
+380,Rosemary's Baby    ,1968, 8.0/10 
+381,Scent of a Woman    ,1992, 8.0/10 
+382,Three Colors: Blue    ,1993, 8.0/10 
+383,Shaun of the Dead    ,2004, 8.0/10 
+384,Hannah and Her Sisters    ,1986, 8.0/10 
+385,Life of Pi    ,2012, 8.0/10 
+386,Frankenstein    ,1931, 8.0/10 
+387,Amarcord    ,1973, 8.0/10 
+388,Mystic River    ,2003, 8.0/10 
+389,Planet of the Apes    ,1968, 8.0/10 
+390,Let the Right One In    ,2008, 8.0/10 
+391,The Artist    ,2011, 8.0/10 
+392,The Lady Vanishes    ,1938, 8.0/10 
+393,The Discreet Charm of the Bourgeoisie    ,1972, 8.0/10 
+394,Mulholland Dr.    ,2001, 8.0/10 
+395,The Incredibles    ,2004, 8.0/10 
+396,Serenity    ,2005, 8.0/10 
+397,Night of the Living Dead    ,1968, 8.0/10 
+398,True Romance    ,1993, 8.0/10 
+399,King Kong    ,1933, 8.0/10 
+400,Breathless    ,1960, 8.0/10 
+401,In Bruges    ,2008, 8.0/10 
+402,The Man from Earth    ,2007, 8.0/10 
+403,Moon    ,2009, 8.0/10 
+404,Freaks    ,1932, 8.0/10 
+405,My Name Is Khan    ,2010, 8.0/10 
+406,Edward Scissorhands    ,1990, 8.0/10 
+407,The Untouchables    ,1987, 8.0/10 
+408,The Pursuit of Happyness    ,2006, 7.9/10 
+409,Spartacus    ,1960, 7.9/10 
+410,Letters from Iwo Jima    ,2006, 7.9/10 
+411,The Blues Brothers    ,1980, 7.9/10 
+412,The Hobbit: An Unexpected Journey    ,2012, 7.9/10 
+413,Almost Famous    ,2000, 7.9/10 
+414,The Breakfast Club    ,1985, 7.9/10 
+415,Midnight Cowboy    ,1969, 7.9/10 
+416,The Conversation    ,1974, 7.9/10 
+417,Before Midnight    ,2013, 7.9/10 
+418,The Hobbit: The Desolation of Smaug    ,2013, 7.9/10 
+419,The Remains of the Day    ,1993, 7.9/10 
+420,The African Queen    ,1951, 7.9/10 
+421,Hero    ,2002, 7.9/10 
+422,Glory    ,1989, 7.9/10 
+423,The Bourne Identity    ,2002, 7.9/10 
+424,Edge of Tomorrow    ,2014, 7.9/10 
+425,Nine Queens    ,2000, 7.9/10 
+426,The Wrestler    ,2008, 7.9/10 
+427,Key Largo    ,1948, 7.9/10 
+428,Once    ,2007, 7.9/10 
+429,The Notebook    ,2004, 7.9/10 
+430,"4 Months, 3 Weeks and 2 Days    ",2007, 7.9/10 
+431,Cowboy Bebop: The Movie    ,2001, 7.9/10 
+432,Bride of Frankenstein    ,1935, 7.9/10 
+433,The Killing Fields    ,1984, 7.9/10 
+434,The Quiet Man    ,1952, 7.9/10 
+435,The Chaser    ,2008, 7.9/10 
+436,Toy Story 2    ,1999, 7.9/10 
+437,The Outlaw Josey Wales    ,1976, 7.9/10 
+438,Children of Men    ,2006, 7.9/10 
+439,All About My Mother    ,1999, 7.9/10 
+440,A Prophet    ,2009, 7.9/10 
+441,Do the Right Thing    ,1989, 7.9/10 
+442,Bonnie and Clyde    ,1967, 7.9/10 
+443,Ninja Scroll    ,1993, 7.9/10 
+444,Badlands    ,1973, 7.9/10 
+445,The Killer    ,1989, 7.9/10 
+446,G.O.R.A.    ,2004, 7.9/10 
+447,Breaking the Waves    ,1996, 7.9/10 
+448,Hard Boiled    ,1992, 7.9/10 
+449,The Man Who Would Be King    ,1975, 7.9/10 
+450,Stagecoach    ,1939, 7.9/10 
+451,The Fall    ,2006, 7.9/10 
+452,The Insider    ,1999, 7.9/10 
+453,Ed Wood    ,1994, 7.9/10 
+454,How to Train Your Dragon 2    ,2014, 7.9/10 
+455,The Right Stuff    ,1983, 7.9/10 
+456,"Crouching Tiger, Hidden Dragon    ",2000, 7.9/10 
+457,The Chorus    ,2004, 7.9/10 
+458,Carlito's Way    ,1993, 7.9/10 
+459,Iron Man    ,2008, 7.9/10 
+460,Walk the Line    ,2005, 7.9/10 
+461,Mr. Nobody    ,2009, 7.9/10 
+462,My Fair Lady    ,1964, 7.9/10 
+463,The Double Life of Veronique    ,1991, 7.9/10 
+464,Jules and Jim    ,1962, 7.9/10 
+465,The Boondock Saints    ,1999, 7.9/10 
+466,Lilya 4-Ever    ,2002, 7.9/10 
+467,Shrek    ,2001, 7.9/10 
+468,Miracle on 34th Street    ,1947, 7.9/10 
+469,The Past    ,2013, 7.9/10 
+470,The Ten Commandments    ,1956, 7.9/10 
+471,Avatar    ,2009, 7.9/10 
+472,Big Hero 6    ,2014, 7.9/10 
+473,My Left Foot    ,1989, 7.9/10 
+474,Nightcrawler    ,2014, 7.9/10 
+475,Boogie Nights    ,1997, 7.9/10 
+476,Crash    ,2004, 7.9/10 
+477,Miller's Crossing    ,1990, 7.9/10 
+478,The Edge of Heaven    ,2007, 7.9/10 
+479,The Fault in Our Stars    ,2014, 7.9/10 
+480,The Fighter    ,2010, 7.9/10 
+481,Halloween    ,1978, 7.9/10 
+482,Cabaret    ,1972, 7.9/10 
+483,Captain Phillips    ,2013, 7.9/10 
+484,Kiki's Delivery Service    ,1989, 7.9/10 
+485,The Man from Nowhere    ,2010, 7.9/10 
+486,Taken    ,2008, 7.9/10 
+487,Hot Fuzz    ,2007, 7.9/10 
+488,Gravity    ,2013, 7.9/10 
+489,The Girl Who Leapt Through Time    ,2006, 7.9/10 
+490,The World's Fastest Indian    ,2005, 7.9/10 
+491,Little Miss Sunshine    ,2006, 7.9/10 
+492,Ferris Bueller's Day Off    ,1986, 7.9/10 
+493,Amour    ,2012, 7.9/10 
+494,Veer-Zaara    ,2004, 7.9/10 
+495,Down by Law    ,1986, 7.9/10 
+496,Batman: Mask of the Phantasm    ,1993, 7.9/10 
+497,Blue Is the Warmest Color    ,2013, 7.9/10 
+498,E.T. the Extra-Terrestrial    ,1982, 7.9/10 
+499,Beasts of No Nation    ,2015, 7.8/10 
+500,The Girl with the Dragon Tattoo    ,2011, 7.8/10 
+501,Clerks    ,1994, 7.8/10 
+502,Glengarry Glen Ross    ,1992, 7.8/10 
+503,The Girl with the Dragon Tattoo    ,2009, 7.8/10 
+504,Tombstone    ,1993, 7.8/10 
+505,The 39 Steps    ,1935, 7.8/10 
+506,Adam's Apples    ,2005, 7.8/10 
+507,Predator    ,1987, 7.8/10 
+508,The Day of the Jackal    ,1973, 7.8/10 
+509,Ordinary People    ,1980, 7.8/10 
+510,I Saw the Devil    ,2010, 7.8/10 
+511,The Best Offer    ,2013, 7.8/10 
+512,The Motorcycle Diaries    ,2004, 7.8/10 
+513,Withnail & I    ,1987, 7.8/10 
+514,The Triplets of Belleville    ,2003, 7.8/10 
+515,Vicky Donor    ,2012, 7.8/10 
+516,The Day the Earth Stood Still    ,1951, 7.8/10 
+517,Evil    ,2003, 7.8/10 
+518,Misery    ,1990, 7.8/10 
+519,Black Book    ,2006, 7.8/10 
+520,Hamlet    ,1996, 7.8/10 
+521,Evil Dead II    ,1987, 7.8/10 
+522,Drive    ,2011, 7.8/10 
+523,About Time    ,2013, 7.8/10 
+524,Back to the Future Part II    ,1989, 7.8/10 
+525,Mother    ,2009, 7.8/10 
+526,Me and Earl and the Dying Girl    ,2015, 7.8/10 
+527,Mississippi Burning    ,1988, 7.8/10 
+528,Kuch Kuch Hota Hai    ,1998, 7.8/10 
+529,Tangled    ,2010, 7.8/10 
+530,American Gangster    ,2007, 7.8/10 
+531,Open Your Eyes    ,1997, 7.8/10 
+532,Fantastic Mr. Fox    ,2009, 7.8/10 
+533,Office Space    ,1999, 7.8/10 
+534,Willy Wonka & the Chocolate Factory    ,1971, 7.8/10 
+535,Fantasia    ,1940, 7.8/10 
+536,The Wind Rises    ,2013, 7.8/10 
+537,The Magnificent Seven    ,1960, 7.8/10 
+538,Silver Linings Playbook    ,2012, 7.8/10 
+539,October Sky    ,1999, 7.8/10 
+540,Gattaca    ,1997, 7.8/10 
+541,Birdman or (The Unexpected Virtue of Ignorance)    ,2014, 7.8/10 
+542,Waking Life    ,2001, 7.8/10 
+543,Belle de Jour    ,1967, 7.8/10 
+544,The Boy in the Striped Pajamas    ,2008, 7.8/10 
+545,Moonrise Kingdom    ,2012, 7.8/10 
+546,Love and Death    ,1975, 7.8/10 
+547,Star Trek Into Darkness    ,2013, 7.8/10 
+548,Empire of the Sun    ,1987, 7.8/10 
+549,Blue Velvet    ,1986, 7.8/10 
+550,The White Ribbon    ,2009, 7.8/10 
+551,Ghostbusters    ,1984, 7.8/10 
+552,Pride & Prejudice    ,2005, 7.8/10 
+553,Porco Rosso    ,1992, 7.8/10 
+554,Apocalypto    ,2006, 7.8/10 
+555,Repulsion    ,1965, 7.8/10 
+556,Zelig    ,1983, 7.8/10 
+557,In America    ,2002, 7.8/10 
+558,The French Connection    ,1971, 7.8/10 
+559,Rebel Without a Cause    ,1955, 7.8/10 
+560,Guess Who's Coming to Dinner    ,1967, 7.8/10 
+561,The Curious Case of Benjamin Button    ,2008, 7.8/10 
+562,Happiness    ,1998, 7.8/10 
+563,Harry Potter and the Prisoner of Azkaban    ,2004, 7.8/10 
+564,Dirty Harry    ,1971, 7.8/10 
+565,The Lunchbox    ,2013, 7.8/10 
+566,Hedwig and the Angry Inch    ,2001, 7.8/10 
+567,The Lego Movie    ,2014, 7.8/10 
+568,The Last of the Mohicans    ,1992, 7.8/10 
+569,The Dirty Dozen    ,1967, 7.8/10 
+570,Atonement    ,2007, 7.8/10 
+571,Zulu    ,1964, 7.8/10 
+572,The Goonies    ,1985, 7.8/10 
+573,Invasion of the Body Snatchers    ,1956, 7.8/10 
+574,"O Brother, Where Art Thou?    ",2000, 7.8/10 
+575,Airplane!    ,1980, 7.8/10 
+576,The Fugitive    ,1993, 7.8/10 
+577,The Longest Day    ,1962, 7.8/10 
+578,The Color Purple    ,1985, 7.8/10 
+579,Night on Earth    ,1991, 7.8/10 
+580,Captain America: The Winter Soldier    ,2014, 7.8/10 
+581,The Hangover    ,2009, 7.8/10 
+582,X-Men: First Class    ,2011, 7.8/10 
+583,The Verdict    ,1982, 7.8/10 
+584,Wreck-It Ralph    ,2012, 7.8/10 
+585,Kingsman: The Secret Service    ,2014, 7.8/10 
+586,Once Upon a Time in Anatolia    ,2011, 7.8/10 
+587,Sicario    ,2015, 7.8/10 
+588,The Last Emperor    ,1987, 7.8/10 
+589,South Park: Bigger Longer & Uncut    ,1999, 7.8/10 
+590,Mary Poppins    ,1964, 7.8/10 
+591,Lost in Translation    ,2003, 7.8/10 
+592,Kung Fu Hustle    ,2004, 7.8/10 
+593,Boyz n the Hood    ,1991, 7.8/10 
+594,The Tenant    ,1976, 7.8/10 
+595,The Game    ,1997, 7.8/10 
+596,Run Lola Run    ,1998, 7.8/10 
+597,Lucky Number Slevin    ,2006, 7.8/10 
+598,Being John Malkovich    ,1999, 7.8/10 
+599,The Experiment    ,2001, 7.8/10 
+600,From Here to Eternity    ,1953, 7.8/10 
+601,Blazing Saddles    ,1974, 7.8/10 
+602,Bridge of Spies    ,2015, 7.8/10 
+603,What's Eating Gilbert Grape    ,1993, 7.8/10 
+604,Awakenings    ,1990, 7.8/10 
+605,Donnie Brasco    ,1997, 7.8/10 
+606,Skyfall    ,2012, 7.8/10 
+607,Serpico    ,1973, 7.8/10 
+608,Breakfast at Tiffany's    ,1961, 7.8/10 
+609,The Name of the Rose    ,1986, 7.8/10 
+610,Pride    ,2014, 7.8/10 
+611,The Broken Circle Breakdown    ,2012, 7.8/10 
+612,Changeling    ,2008, 7.8/10 
+613,The Sandlot    ,1993, 7.8/10 
+614,Goldfinger    ,1964, 7.8/10 
+615,The Bourne Supremacy    ,2004, 7.8/10 
+616,Finding Neverland    ,2004, 7.8/10 
+617,Kramer vs. Kramer    ,1979, 7.8/10 
+618,(500) Days of Summer    ,2009, 7.8/10 
+619,3:10 to Yuma    ,2007, 7.8/10 
+620,Argo    ,2012, 7.8/10 
+621,Il Postino: The Postman    ,1994, 7.8/10 
+622,Ocean's Eleven    ,2001, 7.8/10 
+623,Nebraska    ,2013, 7.8/10 
+624,Remember the Titans    ,2000, 7.8/10 
+625,The Social Network    ,2010, 7.8/10 
+626,A Bronx Tale    ,1993, 7.8/10 
+627,The Purple Rose of Cairo    ,1985, 7.8/10 
+628,The King of Comedy    ,1982, 7.8/10 
+629,Control    ,2007, 7.8/10 
+630,Deliverance    ,1972, 7.8/10 
+631,As Good as It Gets    ,1997, 7.8/10 
+632,The Birds    ,1963, 7.7/10 
+633,Good Bye Lenin!    ,2003, 7.7/10 
+634,300    ,2006, 7.7/10 
+635,Man on Fire    ,2004, 7.7/10 
+636,Ray    ,2004, 7.7/10 
+637,Star Trek II: The Wrath of Khan    ,1982, 7.7/10 
+638,The Red Violin    ,1998, 7.7/10 
+639,The Count of Monte Cristo    ,2002, 7.7/10 
+640,Battle Royale    ,2000, 7.7/10 
+641,Sabrina    ,1954, 7.7/10 
+642,Flipped    ,2010, 7.7/10 
+643,A Hard Day's Night    ,1964, 7.7/10 
+644,Rushmore    ,1998, 7.7/10 
+645,Detachment    ,2011, 7.7/10 
+646,The Machinist    ,2004, 7.7/10 
+647,The Theory of Everything    ,2014, 7.7/10 
+648,Paprika    ,2006, 7.7/10 
+649,Road to Perdition    ,2002, 7.7/10 
+650,Short Cuts    ,1993, 7.7/10 
+651,Adaptation.    ,2002, 7.7/10 
+652,Dark City    ,1998, 7.7/10 
+653,Barton Fink    ,1991, 7.7/10 
+654,Black Hawk Down    ,2001, 7.7/10 
+655,Cast Away    ,2000, 7.7/10 
+656,Dead Man's Shoes    ,2004, 7.7/10 
+657,The Last Samurai    ,2003, 7.7/10 
+658,A Very Long Engagement    ,2004, 7.7/10 
+659,21 Grams    ,2003, 7.7/10 
+660,Titanic    ,1997, 7.7/10 
+661,Ex Machina    ,2015, 7.7/10 
+662,The Great Beauty    ,2013, 7.7/10 
+663,Love Me If You Dare    ,2003, 7.7/10 
+664,Mysterious Skin    ,2004, 7.7/10 
+665,The Last King of Scotland    ,2006, 7.7/10 
+666,Frost/Nixon    ,2008, 7.7/10 
+667,50/50    ,2011, 7.7/10 
+668,Delicatessen    ,1991, 7.7/10 
+669,Enter the Dragon    ,1973, 7.7/10 
+670,Stardust    ,2007, 7.7/10 
+671,Despicable Me    ,2010, 7.7/10 
+672,Fear and Loathing in Las Vegas    ,1998, 7.7/10 
+673,Dead Man    ,1995, 7.7/10 
+674,Malcolm X    ,1992, 7.7/10 
+675,Training Day    ,2001, 7.7/10 
+676,Kick-Ass    ,2010, 7.7/10 
+677,Ponyo    ,2008, 7.7/10 
+678,Harry Potter and the Deathly Hallows: Part 1    ,2010, 7.7/10 
+679,The Station Agent    ,2003, 7.7/10 
+680,Zombieland    ,2009, 7.7/10 
+681,25th Hour    ,2002, 7.7/10 
+682,Giant    ,1956, 7.7/10 
+683,Brokeback Mountain    ,2005, 7.7/10 
+684,Sympathy for Mr. Vengeance    ,2002, 7.7/10 
+685,Shine    ,1996, 7.7/10 
+686,The Dinner Game    ,1998, 7.7/10 
+687,Billy Elliot    ,2000, 7.7/10 
+688,Forbidden Planet    ,1956, 7.7/10 
+689,Philadelphia    ,1993, 7.7/10 
+690,Gone Baby Gone    ,2007, 7.7/10 
+691,The Sweet Hereafter    ,1997, 7.7/10 
+692,The Butterfly Effect    ,2004, 7.7/10 
+693,Primal Fear    ,1996, 7.7/10 
+694,The Blind Side    ,2009, 7.7/10 
+695,Close Encounters of the Third Kind    ,1977, 7.7/10 
+696,This Is England    ,2006, 7.7/10 
+697,The Warriors    ,1979, 7.7/10 
+698,Three Colors: White    ,1994, 7.7/10 
+699,Sense and Sensibility    ,1995, 7.7/10 
+700,The Producers    ,1967, 7.7/10 
+701,The Visitor    ,2007, 7.7/10 
+702,Where Eagles Dare    ,1968, 7.7/10 
+703,After Hours    ,1985, 7.7/10 
+704,Match Point    ,2005, 7.7/10 
+705,Coraline    ,2009, 7.7/10 
+706,Sophie's Choice    ,1982, 7.7/10 
+707,Boy A    ,2007, 7.7/10 
+708,The City of Lost Children    ,1995, 7.7/10 
+709,Love Actually    ,2003, 7.7/10 
+710,Dazed and Confused    ,1993, 7.7/10 
+711,Blood Simple.    ,1984, 7.7/10 
+712,The Muppet Christmas Carol    ,1992, 7.7/10 
+713,Fearless    ,2006, 7.7/10 
+714,Shane    ,1953, 7.7/10 
+715,Who Framed Roger Rabbit    ,1988, 7.7/10 
+716,Show Me Love    ,1998, 7.7/10 
+717,Midnight in Paris    ,2011, 7.7/10 
+718,Dangerous Liaisons    ,1988, 7.7/10 
+719,Saw    ,2004, 7.7/10 
+720,Eastern Promises    ,2007, 7.7/10 
+721,Cell 211    ,2009, 7.7/10 
+722,Blow-Up    ,1966, 7.7/10 
+723,True Grit    ,2010, 7.7/10 
+724,Lolita    ,1962, 7.7/10 
+725,Snow White and the Seven Dwarfs    ,1937, 7.7/10 
+726,First Blood    ,1982, 7.7/10 
+727,In a Better World    ,2010, 7.7/10 
+728,Zodiac    ,2007, 7.7/10 
+729,Little Big Man    ,1970, 7.7/10 
+730,Minority Report    ,2002, 7.7/10 
+731,Leviathan    ,2014, 7.7/10 
+732,The Secret World of Arrietty    ,2010, 7.7/10 
+733,End of Watch    ,2012, 7.7/10 
+734,La Vie en Rose    ,2007, 7.7/10 
+735,Sympathy for Lady Vengeance    ,2005, 7.7/10 
+736,Seven Pounds    ,2008, 7.7/10 
+737,Y Tu Mamá También    ,2001, 7.7/10 
+738,Midnight Express    ,1978, 7.7/10 
+739,Spellbound    ,1945, 7.7/10 
+740,Lost Highway    ,1997, 7.7/10 
+741,Kelly's Heroes    ,1970, 7.7/10 
+742,The Fifth Element    ,1997, 7.7/10 
+743,The Big Blue    ,1988, 7.6/10 
+744,The Player    ,1992, 7.6/10 
+745,Moulin Rouge!    ,2001, 7.6/10 
+746,Traffic    ,2000, 7.6/10 
+747,Dawn of the Planet of the Apes    ,2014, 7.6/10 
+748,Star Wars: Episode III - Revenge of the Sith    ,2005, 7.6/10 
+749,Watchmen    ,2009, 7.6/10 
+750,Grindhouse    ,2007, 7.6/10 
+751,Inside Man    ,2006, 7.6/10 
+752,Fried Green Tomatoes    ,1991, 7.6/10 
+753,MASH    ,1970, 7.6/10 
+754,Kiss Kiss Bang Bang    ,2005, 7.6/10 
+755,Whale Rider    ,2002, 7.6/10 
+756,Harry Potter and the Goblet of Fire    ,2005, 7.6/10 
+757,Stranger Than Fiction    ,2006, 7.6/10 
+758,Philomena    ,2013, 7.6/10 
+759,The Royal Tenenbaums    ,2001, 7.6/10 
+760,I Am Sam    ,2001, 7.6/10 
+761,The Wicker Man    ,1973, 7.6/10 
+762,A Few Good Men    ,1992, 7.6/10 
+763,Mad Max 2: The Road Warrior    ,1981, 7.6/10 
+764,The Thin Red Line    ,1998, 7.6/10 
+765,High Plains Drifter    ,1973, 7.6/10 
+766,The Illusionist    ,2006, 7.6/10 
+767,The Jungle Book    ,1967, 7.6/10 
+768,The Haunting    ,1963, 7.6/10 
+769,Lethal Weapon    ,1987, 7.6/10 
+770,The Flowers of War    ,2011, 7.6/10 
+771,127 Hours    ,2010, 7.6/10 
+772,Les Misérables    ,2012, 7.6/10 
+773,The Skin I Live In    ,2011, 7.6/10 
+774,The Hunger Games: Catching Fire    ,2013, 7.6/10 
+775,When Harry Met Sally...    ,1989, 7.6/10 
+776,United 93    ,2006, 7.6/10 
+777,The Godfather: Part III    ,1990, 7.6/10 
+778,Blow    ,2001, 7.6/10 
+779,Sherlock Holmes    ,2009, 7.6/10 
+780,28 Days Later...    ,2002, 7.6/10 
+781,Milk    ,2008, 7.6/10 
+782,The Kite Runner    ,2007, 7.6/10 
+783,Thank You for Smoking    ,2005, 7.6/10 
+784,American Psycho    ,2000, 7.6/10 
+785,Lord of War    ,2005, 7.6/10 
+786,House of Sand and Fog    ,2003, 7.6/10 
+787,Superbad    ,2007, 7.6/10 
+788,Ghost in the Shell 2: Innocence    ,2004, 7.6/10 
+789,Munich    ,2005, 7.6/10 
+790,The Legend of Drunken Master    ,1994, 7.6/10 
+791,Dracula    ,1931, 7.6/10 
+792,The Raid: Redemption    ,2011, 7.6/10 
+793,The Crow    ,1994, 7.6/10 
+794,The Others    ,2001, 7.6/10 
+795,The Naked Gun: From the Files of Police Squad!    ,1988, 7.6/10 
+796,Volver    ,2006, 7.6/10 
+797,Animal House    ,1978, 7.6/10 
+798,Army of Darkness    ,1992, 7.6/10 
+799,Apollo 13    ,1995, 7.6/10 
+800,Man Bites Dog    ,1992, 7.6/10 
+801,West Side Story    ,1961, 7.6/10 
+802,The Party    ,1968, 7.6/10 
+803,Frozen    ,2013, 7.6/10 
+804,The Hurt Locker    ,2008, 7.6/10 
+805,The Last Temptation of Christ    ,1988, 7.6/10 
+806,Escape from Alcatraz    ,1979, 7.6/10 
+807,The Hunt for Red October    ,1990, 7.6/10 
+808,The Counterfeiters    ,2007, 7.6/10 
+809,13 Assassins    ,2010, 7.6/10 
+810,A Fish Called Wanda    ,1988, 7.6/10 
+811,A Royal Affair    ,2012, 7.6/10 
+812,Zatoichi    ,2003, 7.6/10 
+813,The Impossible    ,2012, 7.6/10 
+814,Fury    ,2014, 7.6/10 
+815,The Man Who Wasn't There    ,2001, 7.6/10 
+816,The Time Machine    ,1960, 7.6/10 
+817,Indiana Jones and the Temple of Doom    ,1984, 7.6/10 
+818,Kung Fu Panda    ,2008, 7.6/10 
+819,Following    ,1998, 7.6/10 
+820,Funny Games    ,1997, 7.6/10 
+821,"It's a Mad, Mad, Mad, Mad World    ",1963, 7.6/10 
+822,Falling Down    ,1993, 7.6/10 
+823,Hunger    ,2008, 7.6/10 
+824,Enemy at the Gates    ,2001, 7.6/10 
+825,The Abyss    ,1989, 7.6/10 
+826,The Guns of Navarone    ,1961, 7.6/10 
+827,Ip Man 2    ,2010, 7.6/10 
+828,Robin Hood    ,1973, 7.6/10 
+829,The Little Mermaid    ,1989, 7.6/10 
+830,"Lust, Caution    ",2007, 7.6/10 
+831,The Secret of NIMH    ,1982, 7.6/10 
+832,The Wave    ,2008, 7.6/10 
+833,Moneyball    ,2011, 7.6/10 
+834,The Piano    ,1993, 7.6/10 
+835,Secondhand Lions    ,2003, 7.6/10 
+836,An American Werewolf in London    ,1981, 7.6/10 
+837,Avengers: Age of Ultron    ,2015, 7.6/10 
+838,The Reader    ,2008, 7.6/10 
+839,Garden State    ,2004, 7.6/10 
+840,Die Hard: With a Vengeance    ,1995, 7.6/10 
+841,The Great Debaters    ,2007, 7.6/10 
+842,Interview with the Vampire: The Vampire Chronicles    ,1994, 7.6/10 
+843,The Meaning of Life    ,1983, 7.6/10 
+844,Hoosiers    ,1986, 7.6/10 
+845,Mesrine Part 1: Killer Instinct    ,2008, 7.6/10 
+846,The Omen    ,1976, 7.6/10 
+847,Midnight Run    ,1988, 7.6/10 
+848,The Book Thief    ,2013, 7.6/10 
+849,A Single Man    ,2009, 7.6/10 
+850,Little Children    ,2006, 7.6/10 
+851,Dead Alive    ,1992, 7.6/10 
+852,Disconnect    ,2012, 7.6/10 
+853,Lone Survivor    ,2013, 7.6/10 
+854,Ice Age    ,2002, 7.6/10 
+855,Leaving Las Vegas    ,1995, 7.6/10 
+856,The Town    ,2010, 7.6/10 
+857,Tucker and Dale vs. Evil    ,2010, 7.6/10 
+858,Boys Don't Cry    ,1999, 7.6/10 
+859,Rise of the Planet of the Apes    ,2011, 7.6/10 
+860,Chaplin    ,1992, 7.6/10 
+861,Dead Man Walking    ,1995, 7.6/10 
+862,The Evil Dead    ,1981, 7.6/10 
+863,Headhunters    ,2011, 7.6/10 
+864,Tell No One    ,2006, 7.6/10 
+865,Collateral    ,2004, 7.6/10 
+866,High Fidelity    ,2000, 7.6/10 
+867,The Hours    ,2002, 7.6/10 
+868,The Fisher King    ,1991, 7.6/10 
+869,Batman    ,1989, 7.6/10 
+870,"Planes, Trains & Automobiles    ",1987, 7.6/10 
+871,Sideways    ,2004, 7.6/10 
+872,House of Flying Daggers    ,2004, 7.6/10 
+873,What We Do in the Shadows    ,2014, 7.6/10 
+874,Hair    ,1979, 7.6/10 
+875,Field of Dreams    ,1989, 7.6/10 
+876,The Hurricane    ,1999, 7.6/10 
+877,Hugo    ,2011, 7.6/10 
+878,Star Trek: First Contact    ,1996, 7.6/10 
+879,Christmas Vacation    ,1989, 7.6/10 
+880,The Damned United    ,2009, 7.6/10 
+881,Ghost Dog: The Way of the Samurai    ,1999, 7.5/10 
+882,The Assassination of Jesse James by the Coward Robert Ford    ,2007, 7.5/10 
+883,The Natural    ,1984, 7.5/10 
+884,Sleepers    ,1996, 7.5/10 
+885,August Rush    ,2007, 7.5/10 
+886,"The Cook, the Thief, His Wife & Her Lover    ",1989, 7.5/10 
+887,The Edukators    ,2004, 7.5/10 
+888,Bullets Over Broadway    ,1994, 7.5/10 
+889,Rudy    ,1993, 7.5/10 
+890,The Life of David Gale    ,2003, 7.5/10 
+891,Gangs of New York    ,2002, 7.5/10 
+892,"Good Night, and Good Luck.    ",2005, 7.5/10 
+893,RoboCop    ,1987, 7.5/10 
+894,The Wind That Shakes the Barley    ,2006, 7.5/10 
+895,Menace II Society    ,1993, 7.5/10 
+896,Jacob's Ladder    ,1990, 7.5/10 
+897,42    ,2013, 7.5/10 
+898,Juno    ,2007, 7.5/10 
+899,Of Mice and Men    ,1992, 7.5/10 
+900,The Bridges of Madison County    ,1995, 7.5/10 
+901,Elizabeth    ,1998, 7.5/10 
+902,Straw Dogs    ,1971, 7.5/10 
+903,Equilibrium    ,2002, 7.5/10 
+904,Green Street Hooligans    ,2005, 7.5/10 
+905,Perfume: The Story of a Murderer    ,2006, 7.5/10 
+906,The Class    ,2008, 7.5/10 
+907,Life as a House    ,2001, 7.5/10 
+908,Saving Mr. Banks    ,2013, 7.5/10 
+909,Quiz Show    ,1994, 7.5/10 
+910,Jackie Brown    ,1997, 7.5/10 
+911,The Painted Veil    ,2006, 7.5/10 
+912,A Perfect World    ,1993, 7.5/10 
+913,Reign Over Me    ,2007, 7.5/10 
+914,A Simple Plan    ,1998, 7.5/10 
+915,The Fly    ,1986, 7.5/10 
+916,The Curse of the Were-Rabbit    ,2005, 7.5/10 
+917,The Illusionist    ,2010, 7.5/10 
+918,American Splendor    ,2003, 7.5/10 
+919,Maria Full of Grace    ,2004, 7.5/10 
+920,Pleasantville    ,1998, 7.5/10 
+921,The Man Who Knew Too Much    ,1956, 7.5/10 
+922,American Graffiti    ,1973, 7.5/10 
+923,Mulan    ,1998, 7.5/10 
+924,Marathon Man    ,1976, 7.5/10 
+925,Steve Jobs    ,2015, 7.5/10 
+926,Miracle    ,2004, 7.5/10 
+927,Scott Pilgrim vs. the World    ,2010, 7.5/10 
+928,Sherlock Holmes: A Game of Shadows    ,2011, 7.5/10 
+929,Doubt    ,2008, 7.5/10 
+930,The Conjuring    ,2013, 7.5/10 
+931,Legends of the Fall    ,1994, 7.5/10 
+932,Cloud Atlas    ,2012, 7.5/10 
+933,We Need to Talk About Kevin    ,2011, 7.5/10 
+934,Freedom Writers    ,2007, 7.5/10 
+935,Gallipoli    ,1981, 7.5/10 
+936,My Cousin Vinny    ,1992, 7.5/10 
+937,Three Days of the Condor    ,1975, 7.5/10 
+938,A Nightmare on Elm Street    ,1984, 7.5/10 
+939,Harry Potter and the Half-Blood Prince    ,2009, 7.5/10 
+940,Malèna    ,2000, 7.5/10 
+941,Pinocchio    ,1940, 7.5/10 
+942,Rust and Bone    ,2012, 7.5/10 
+943,The Ice Storm    ,1997, 7.5/10 
+944,The Orphanage    ,2007, 7.5/10 
+945,The Walk    ,2015, 7.5/10 
+946,Selma    ,2014, 7.5/10 
+947,Despicable Me 2    ,2013, 7.5/10 
+948,Best in Show    ,2000, 7.5/10 
+949,Everything Is Illuminated    ,2005, 7.5/10 
+950,Total Recall    ,1990, 7.5/10 
+951,Harry Potter and the Sorcerer's Stone    ,2001, 7.5/10 
+952,Southpaw    ,2015, 7.5/10 
+953,The Devil's Advocate    ,1997, 7.5/10 
+954,X2    ,2003, 7.5/10 
+955,Felon    ,2008, 7.5/10 
+956,[Rec]    ,2007, 7.5/10 
+957,Fruitvale Station    ,2013, 7.5/10 
+958,To Catch a Thief    ,1955, 7.5/10 
+959,Buffalo '66    ,1998, 7.5/10 
+960,Mission: Impossible - Rogue Nation    ,2015, 7.5/10 
+961,The Texas Chain Saw Massacre    ,1974, 7.5/10 
+962,The Aviator    ,2004, 7.5/10 
+963,A History of Violence    ,2005, 7.5/10 
+964,Source Code    ,2011, 7.5/10 
+965,The Constant Gardener    ,2005, 7.5/10 
+966,Frenzy    ,1972, 7.5/10 
+967,Biutiful    ,2010, 7.5/10 
+968,Open Range    ,2003, 7.5/10 
+969,Pi    ,1998, 7.5/10 
+970,Still Alice    ,2014, 7.5/10 
+971,The Devil's Backbone    ,2001, 7.5/10 
+972,From Russia with Love    ,1963, 7.5/10 
+973,Thesis    ,1996, 7.5/10 
+974,Babel    ,2006, 7.5/10 
+975,In the Loop    ,2009, 7.5/10 
+976,In the Bedroom    ,2001, 7.5/10 
+977,Dracula    ,1992, 7.5/10 
+978,Bad Education    ,2004, 7.5/10 
+979,The Hobbit: The Battle of the Five Armies    ,2014, 7.5/10 
+980,The Mission    ,1986, 7.5/10 
+981,Bullitt    ,1968, 7.5/10 
+982,The Three Burials of Melquiades Estrada    ,2005, 7.5/10 
+983,Harry Potter and the Order of the Phoenix    ,2007, 7.5/10 
+984,Suspiria    ,1977, 7.5/10 
+985,Home Alone    ,1990, 7.5/10 
+986,Trading Places    ,1983, 7.5/10 
+987,Beetlejuice    ,1988, 7.5/10 
+988,Witness    ,1985, 7.5/10 
+989,Up in the Air    ,2009, 7.5/10 
+990,Begin Again    ,2013, 7.5/10 
+991,The Proposition    ,2005, 7.5/10 
+992,Looper    ,2012, 7.4/10 
+993,Running Scared    ,2006, 7.4/10 
+994,Ghost World    ,2001, 7.4/10 
+995,Inside Llewyn Davis    ,2013, 7.4/10 
+996,Man on the Moon    ,1999, 7.4/10 
+997,Notes on a Scandal    ,2006, 7.4/10 
+998,Mud    ,2012, 7.4/10 
+999,Alice in Wonderland    ,1951, 7.4/10 
+1000,Mean Streets    ,1973, 7.4/10 

@@ -84,7 +84,7 @@ var Facettage = (()=>{
         facet.ephemeral = false;
         facet.dependencies = [];
         facet._compute = opts.compute;
-        facet.dataFormat = 'json';
+        facet.type = 'json';
 
         // Check and apply options
         if (opts.cached) { facet.cached = true; }
@@ -109,22 +109,30 @@ var Facettage = (()=>{
           facet.ready = true;
         }
 
-        if (opts.dataFormat) {
-          switch (opts.dataFormat) {
+        if (opts.type) {
+          switch (opts.type) {
             case 'json':
               facet.formatUnserialize = JSON.parse;
               facet.formatSerialize = JSON.stringify;
               break;
+            case 'text':
+              facet.formatUnserialize = x => x;
+              facet.formatSerialize = x => x;
+              break;
             case 'csv':
               facet.formatUnserialize = d3.csv.parse;
               facet.formatSerialize = d3.csv.format;
+              break;
+            case 'tsv':
+              facet.formatUnserialize = d3.tsv.parse;
+              facet.formatSerialize = d3.tsv.format;
               break;
             case 'csvRows':
               facet.formatUnserialize = d3.csv.parseRows;
               facet.formatSerialize = d3.csv.formatRows;
               break;
             default:
-              console.log(`Unknown dataFormat ${opts.dataFormat} for facet ${id}`)
+              console.log(`Unknown type ${opts.type} for facet ${id}`)
               break;
           }
         } else {
@@ -213,17 +221,21 @@ var Facettage = (()=>{
           ns.clearEphemeralFacets();
           if (facet.isCached()) {
             let url = ns.getFacetCacheURL(facet.id);
-            $.get(url, function(d){
-              facet.data = facet.unserialize(facet.formatUnserialize(d));
-              facet.ready = true;
-              callback(facet.data);
-            }).fail(function() {
-                console.log(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, facet);
+            d3.text(url).get(function (error, d) {
+              if (error) {
+                return console.warn(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, facet, error);
                 if (opts && opts.computeAtFail) {
-                  console.log('-> Now trying to compute.');
+                  if (ns.verbose) {
+                    console.log('-> Now trying to compute.');
+                  }
                   facet.computeData(callback, {withDependencies: true});
                 }
-              })
+              } else {
+                facet.data = facet.unserialize(facet.formatUnserialize(d));
+                facet.ready = true;
+                callback(facet.data);
+              }
+            });
           } else {
             console.log(`Unloadable facet: ${id}`, facet);
           }
