@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="index.html">Facettage.js examples</a>
+  </header>
+
+  <section>
+    <h1>03 - Create a clean facet</h1>
+  </section>
+
+  <article>
+    <h3>Steps:</h3>
+    <ol>
+      <li>Create a facet for original data that we need to refine.</li>
+      <li>Create a facet for clean data. It depends on previous facet.</li>
+      <li>Retrieve data from the clean facet and display it as a HTML table.</li>
+    </ol>
+    <br>
+    <button onClick="retrieveMovies()">RETRIEVE & DISPLAY MOVIES</button>
+    <br>
+    <div id="movies"></div>
+  </article>
+
+<script type="text/javascript">
+
+// Create original facet
+// Note: we don't need to store it in a variable.
+Facettage.newFacet('movies.csv', {
+  cached: true,
+  type: 'csv'
+});
+
+// Create another facet for clean data
+// Note: different facets must have different names.
+Facettage.newFacet('movies', {
+  dependencies: ['movies.csv'],
+  compute: function () {
+    var movies_raw = Facettage.getFacet('movies.csv').getData();
+    return movies_raw.map( function (movie) {
+      var result = {};
+      // Retrieve the original title and year:
+      // "Her (2013)" becomes "Her" and "2013" as a number
+      var pattern_match = /(.*[^ ]) *\(([0-9]{4})\)/.exec(movie.Movie);
+      result.title = pattern_match[1];
+      result.year = Number(pattern_match[2]);
+      // Clean the rating: "9.0/10" becomes "9.0" as a number      
+      result.rating = Number(movie.Rating.replace('/10', ''));
+      // The rank is clean, we just make it a number
+      result.rank = Number(movie.Rank);
+      return result;
+    });
+  }
+});
+
+// Retrieve data
+function retrieveMovies() {
+  Facettage.getFacet('movies').retrieveData( function (data) {
+    // This time we parse data in order to build HTML code
+    var data_html_rows = data
+      .map( function (movie) {
+        return '<tr><td>' + movie.rank + '</td><td>' + 
+          movie.title + '</td><td>' + movie.year + '</td><td>' + 
+          movie.rating + '</td></tr>';
+      }).join('');
+    var header_row = '<tr><th>Rank</th><th>Movie</th><th>Year</th><th>Rating</th></tr>';
+    document.querySelector('#movies').innerHTML = '<table>' + header_row +data_html_rows + '</table>';
+  });
+}
+
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      We load the same <a href="data/cache/movies.csv">file</a> as previous examples. However note that it has some discrepancies:
+      <ul>
+        <li>The movie title and year are in the same field</li>
+        <li>The rating is not a number but a score written as a fraction</li>
+      </ul>
+    </p>
+    <pre># Original file:
+Rank|Rating|Movie
+19  |8.7/10|The Matrix (1999)
+20  |8.7/10|Star Wars (1977)
+
+# Expected clean result:
+rank|rating|title     |year
+19  |8.7   |The Matrix|1999
+20  |8.7   |Star Wars |1977</pre>
+    <p>
+      Facets can be put to good use to clean or refine data, which is a very common task.
+    </p>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="02.html">&lt; 02</a> | <a href="index.html">Examples list</a> | <a href="04.html">04 &gt;</a>
+</footer>
+
+</body>
+
+</html>

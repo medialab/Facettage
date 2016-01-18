@@ -48,7 +48,7 @@ var movies_facet_csv = Facettage.newFacet('movies.csv', {
 });
 
 // Retrieve data
-function loadMovies_csv () {
+function loadMovies_csv() {
   movies_facet_csv.retrieveData( function (data) {
     document.querySelector('#movies_csv').textContent = data
   });
@@ -62,7 +62,7 @@ function loadMovies_csv () {
       Load the same <a href="data/cache/movies.csv">file</a> as in example 01 then display it in a HTML element.
     </p>
     <p>
-      Its <strong>'type'</strong> attribute is now <strong>'csv'</strong>. Parsed as a CSV it appears as a list of objects. <em>Facettage</em> uses the <em>D3.js</em> CSV parser.
+      Its <code>type</code> attribute is now <code>csv</code>. Parsed as a CSV it appears as a list of objects. <em>Facettage</em> uses the <em>D3.js</em> CSV parser.
     </p>
     <p>
       Other types you may use:
@@ -77,7 +77,7 @@ function loadMovies_csv () {
 </main>
 
 <footer>
-  <a href="01.html">&lt; 01 Basics</a> | <a href="index.html">Examples list</a> | <a href="03.html">03 &gt;</a>
+  <a href="01.html">&lt; 01</a> | <a href="index.html">Examples list</a> | <a href="03.html">03 &gt;</a>
 </footer>
 
 </body>
