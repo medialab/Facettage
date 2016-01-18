@@ -16,7 +16,7 @@ When you build a data-oriented static website, *Facettage* organizes how to acce
 - How to easily **generate cache files** when you have no backend?
 - You want to **clear certain facets** because of RAM issues, but not *that* heavy, costly but crucial facet that is needed everywhere.
 
-> "Data management is like graphic design: few is more."                                                                                         
+> "Few it's more."                                                                                         
 > _- Morritz Few_
 
 ### How to use
