@@ -34,9 +34,9 @@
   <article>
     <h3>Load data from cache</h3>
     <br>
-    <button onClick="loadMovies()">LOAD MOVIES</button>
+    <button onClick="loadMovies_text()">LOAD MOVIES AS TEXT</button>
     <br>
-    <div id="movies"></div>
+    <div id="movies_text"></div>
   </article>
 
   <aside>
@@ -54,14 +54,15 @@
 
 <script type="text/javascript">
 
-var movies_facet = Facettage.newFacet('movies.csv', {
+// Create a facet
+var movies_facet_text = Facettage.newFacet('movies.csv', {
   cached: true,
   type: 'text'
 });
 
-function loadMovies () {
-  movies_facet.retrieveData( function (data) {
-    document.querySelector('#movies').textContent = data
+function loadMovies_text () {
+  movies_facet_text.retrieveData( function (data) {
+    document.querySelector('#movies_text').textContent = data
   });
 }
 
