@@ -219,26 +219,22 @@ var Facettage = (()=>{
 
         facet.loadData = function (callback, opts) {
           ns.clearEphemeralFacets();
-          if (facet.isCached()) {
-            let url = ns.getFacetCacheURL(facet.id);
-            d3.text(url).get(function (error, d) {
-              if (error) {
-                return console.warn(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, facet, error);
-                if (opts && opts.computeAtFail) {
-                  if (ns.verbose) {
-                    console.log('-> Now trying to compute.');
-                  }
-                  facet.computeData(callback, {withDependencies: true});
+          let url = ns.getFacetCacheURL(facet.id);
+          d3.text(url).get(function (error, d) {
+            if (error) {
+              return console.warn(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, facet, error);
+              if (opts && opts.computeAtFail) {
+                if (ns.verbose) {
+                  console.log('-> Now trying to compute.');
                 }
-              } else {
-                facet.data = facet.unserialize(facet.formatUnserialize(d));
-                facet.ready = true;
-                callback(facet.data);
+                facet.computeData(callback, {withDependencies: true});
               }
-            });
-          } else {
-            console.log(`Unloadable facet: ${id}`, facet);
-          }
+            } else {
+              facet.data = facet.unserialize(facet.formatUnserialize(d));
+              facet.ready = true;
+              callback(facet.data);
+            }
+          });
         }
 
         facet.areDependenciesReady = function () {

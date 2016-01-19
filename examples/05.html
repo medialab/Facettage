@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+<script src="assets/FileSaver.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="index.html">Facettage.js examples</a>
+  </header>
+
+  <section>
+    <h1>05 - Caching data</h1>
+  </section>
+
+  <article>
+    <h3>CLEANED LIST OF MOVIES</h3>
+    <p>
+      In order to cache the data, we have to compute and download the cached file:
+    </p>
+    <button onClick="retrieveAndDownloadCacheData()">RETRIEVE AND DOWNLOAD CACHE DATA</button>
+    <p>
+      <strong>We are then supposed to put that file in the cache directory</strong> located in <code>data/cache/</code>. It is already the case, so we can load it from cache already:
+    </p>
+    <button onClick="loadAndDisplay()">LOAD FROM CACHE AND DISPLAY</button>
+    <br>
+    <div id="movies"></div>
+  </article>
+
+<script type="text/javascript">
+
+/**
+ * Declare facets
+ */
+
+// Original data, a raw list of movies
+Facettage.newFacet('movies.csv', {
+  cached: true,
+  type: 'csv'
+});
+
+// Clean data, the same list but properly formatted
+// Note: it is not cached and has no unserialization method
+Facettage.newFacet('movies', {
+  dependencies: ['movies.csv'],
+  compute: function () {
+    return Facettage.getFacet('movies.csv').getData().map(cleanMovieObject);
+  }
+});
+
+/**
+ * Download cache data
+ */
+
+function retrieveAndDownloadCacheData() {
+  var fct = Facettage.getFacet('movies');
+  fct.retrieveData( function (data) {
+    fct.download();
+  });
+}
+
+/**
+ * Retrieve and display data
+ */
+
+function loadAndDisplay() {
+  // Using loadData() insteand of retrieveData() forces to download from cache
+  Facettage.getFacet('movies').loadData( function (data) {
+    displayMovies(data);
+  });
+}
+
+/**
+ * Data processing and display functions
+ */
+
+// Clean data: separate title and year and parse numbers
+function cleanMovieObject(movie) {
+  var result = {};
+  // Retrieve the original title and year:
+  // "Her (2013)" becomes "Her" and "2013" as a number
+  var pattern_match = /(.*[^ ]) *\(([0-9]{4})\)/.exec(movie.Movie);
+  result.title = pattern_match[1];
+  result.year = Number(pattern_match[2]);
+  // Clean the rating: "9.0/10" becomes "9.0" as a number      
+  result.rating = Number(movie.Rating.replace('/10', ''));
+  // The rank is clean, we just make it a number
+  result.rank = Number(movie.Rank);
+  return result;
+}
+
+// Display movies as a HTML table
+function displayMovies(data) {
+  var data_html_rows = data
+    .map( function (movie) {
+      return '<tr><td>' + movie.rank + '</td><td>' + 
+        movie.title + '</td><td>' + movie.year + '</td><td>' + 
+        movie.rating + '</td></tr>';
+    }).join('');
+  var header_row = '<tr><th>Rank</th><th>Movie</th><th>Year</th><th>Rating</th></tr>';
+  document.querySelector('#movies').innerHTML = '<table>' + header_row +data_html_rows + '</table>';
+}
+
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      We load the usual <a href="data/cache/movies.csv">movie file</a> and we clean it like in <a href="03.html">example 03</a>.
+    </p>
+    <p>
+      <code>retrieveAndDownloadCacheData()</code> computes the clean data from the raw data then downloads it as a file <strong>using the same name</strong> as the facet.
+    </p>
+    <p>
+      <code>loadData()</code> loads data from cache instead of finding the best solution like <code>retrieveData()</code>. In this example, <code>retrieveData()</code> would not load the data from cache unless we set the facet to <code>cached = true</code>.
+    </p>
+    <p>
+      <strong>Caching clean data is recommended</strong> since most of the time you want to load it instead of raw data.
+    </p>
+    <h3>Warning</h3>
+    <p>
+      <strong>Unserialization is not used</strong> in this example, which would cause issues. See <a href="06.html">next example</a> to learn about that.
+    </p>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="04.html">&lt; 04</a> | <a href="index.html">Examples list</a> | <a href="06.html">06 &gt;</a>
+</footer>
+
+</body>
+
+</html>
