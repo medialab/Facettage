@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="index.html">Facettage.js examples</a>
+  </header>
+
+  <section>
+    <h1>04 - A facet for a top 10</h1>
+  </section>
+
+  <article>
+    <h3>TOP 10 MOVIES</h3>
+    <button onClick="retrieveAndDisplay()">RETRIEVE AND DISPLAY DATA</button>
+    <br>
+    <div id="movies"></div>
+  </article>
+
+<script type="text/javascript">
+
+/**
+ * Declare facets
+ */
+
+// Original data, a raw list of movies
+Facettage.newFacet('movies.csv', {
+  cached: true,
+  type: 'csv'
+});
+
+// Clean data, the same list but properly formatted
+Facettage.newFacet('movies', {
+  dependencies: ['movies.csv'],
+  compute: function () {
+    return Facettage.getFacet('movies.csv').getData().map(cleanMovieObject);
+  }
+});
+
+// Top 10 movies
+Facettage.newFacet('movies_top10', {
+  dependencies: ['movies'],
+  compute: function () {
+    // Sort movies by rank then keep the first 10
+    var movies = Facettage.getFacet('movies').getData();
+    movies.sort(function (a, b) {
+      return a.rank - b.rank;
+    })
+    return movies.filter( function (movie, i) {
+      return i < 10;
+    });
+  }
+});
+
+/**
+ * Retrieve and display data
+ */
+
+function retrieveAndDisplay() {
+  Facettage.getFacet('movies_top10').retrieveData( function (data) {
+    displayMovies(data);
+  });
+}
+
+/**
+ * Data processing and display functions
+ */
+
+// Clean data: separate title and year and parse numbers
+function cleanMovieObject(movie) {
+  var result = {};
+  // Retrieve the original title and year:
+  // "Her (2013)" becomes "Her" and "2013" as a number
+  var pattern_match = /(.*[^ ]) *\(([0-9]{4})\)/.exec(movie.Movie);
+  result.title = pattern_match[1];
+  result.year = Number(pattern_match[2]);
+  // Clean the rating: "9.0/10" becomes "9.0" as a number      
+  result.rating = Number(movie.Rating.replace('/10', ''));
+  // The rank is clean, we just make it a number
+  result.rank = Number(movie.Rank);
+  return result;
+}
+
+// Display movies as a HTML table
+function displayMovies(data) {
+  var data_html_rows = data
+    .map( function (movie) {
+      return '<tr><td>' + movie.rank + '</td><td>' + 
+        movie.title + '</td><td>' + movie.year + '</td><td>' + 
+        movie.rating + '</td></tr>';
+    }).join('');
+  var header_row = '<tr><th>Rank</th><th>Movie</th><th>Year</th><th>Rating</th></tr>';
+  document.querySelector('#movies').innerHTML = '<table>' + header_row +data_html_rows + '</table>';
+}
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      We load the same <a href="data/cache/movies.csv">file</a> as previous examples.
+      Once cleaned it looks like that:
+    </p>
+    <pre># Movies (cleaned)
+
+rank|rating|title     |year
+19  |8.7   |The Matrix|1999
+20  |8.7   |Star Wars |1977</pre>
+    <p>
+      Different facets are required:
+      <ol>
+        <li>One for <strong>raw data</strong></li>
+        <li>One for <strong>clean data</strong>. Uses facet 1.</li>
+        <li>One for the <strong>top 10</strong>. Uses facet 2.</li>
+      </ol>
+    </p>
+    <p>
+      Nothing happens until the <code>retrieveAndDisplay()</code> method is called.
+      Then data from the <code>movies_top10</code> facet is called, and the dependencies resolve, leading to these actions:
+      <ol>
+        <li>Download raw data from cache</li>
+        <li>Compute clean data</li>
+        <li>Compute top 10</li>
+        <li>Display it</li>
+      </ol>
+    </p>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="03.html">&lt; 03</a> | <a href="index.html">Examples list</a> | <a href="05.html">05 &gt;</a>
+</footer>
+
+</body>
+
+</html>
