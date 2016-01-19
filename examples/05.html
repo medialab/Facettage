@@ -127,13 +127,25 @@ function displayMovies(data) {
       We load the usual <a href="data/cache/movies.csv">movie file</a> and we clean it like in <a href="03.html">example 03</a>.
     </p>
     <p>
-      <code>retrieveAndDownloadCacheData()</code> computes the clean data from the raw data then downloads it as a file <strong>using the same name</strong> as the facet.
+      The first button computes the clean data from the raw data then downloads it as a file <strong>using the same name</strong> as the facet.
     </p>
     <p>
-      <code>loadData()</code> loads data from cache instead of finding the best solution like <code>retrieveData()</code>. In this example, <code>retrieveData()</code> would not load the data from cache unless we set the facet to <code>cached = true</code>.
+      In the second part, <code>loadData()</code> loads data from cache instead of finding the best solution like with <code>retrieveData()</code>. In this example, <code>retrieveData()</code> would not load the data from cache unless we set the facet to <code>cached = true</code>.
+    </p>
+    <h3>How to cache a facet?</h3>
+    <p>
+      <ol>
+        <li>Compute the facet *</li>
+        <li>Download it</li>
+        <li>Move the file to <code>data/cache/</code></li>
+        <li>Set facet to <code>cached = true</code></li>
+      </ol>
     </p>
     <p>
-      <strong>Caching clean data is recommended</strong> since most of the time you want to load it instead of raw data.
+      Caching clean data is recommended since most of the time you want to load it instead of raw data.
+    </p>
+    <p>
+      * Serialization &amp; unserialization methods may be required, see in next examples.
     </p>
     <h3>Warning</h3>
     <p>
