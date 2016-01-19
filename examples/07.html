@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="index.html">Facettage.js examples</a>
+  </header>
+
+  <section>
+    <h1>07 - A facet for a curve</h1>
+  </section>
+
+  <article>
+    <h3>YEARLY VOLUME OF MOVIES</h3>
+    <div id="curve"><em>Loading...</em></div>
+  </article>
+
+  <!-- D3 styles -->
+  <style type="text/css">
+#curve {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: steelblue;
+}
+  </style>
+
+<script type="text/javascript">
+
+window.onload = retrieveAndDisplay;
+
+/**
+ * Declare facets
+ */
+
+// Clean data
+Facettage.newFacet('movies', {
+  cached: true,
+  // Dependencies and compute() are useless here because of data cache
+  // Note: we recommend always keeping them in case you change your mind
+  dependencies: ['movies.csv'],
+  compute: function () {
+    // Note: we omitted to rewrite the cleanMovieObject() method for the sake of clarity
+    return Facettage.getFacet('movies.csv').getData().map(cleanMovieObject);
+  }
+});
+
+// Yearly volume
+Facettage.newFacet('movies_yearlyVolume', {
+  dependencies: ['movies'],
+  compute: function () {
+    var data = Facettage.getFacet('movies').getData();
+    return d3.nest()
+      // Nest data by year
+      .key(function (d) { return d.year; })
+      // Rollup to get the volume (number of movies per year)
+      .rollup(function (leaves) { return leaves.length })
+      .entries(data)
+        // Transform the nest in an array of explicit objects
+        .map(function (d) {
+          return {year: d.key, volume: d.values};
+        });
+  }
+});
+
+/**
+ * Retrieve and display data
+ */
+
+function retrieveAndDisplay() {
+  Facettage.getFacet('movies_yearlyVolume').retrieveData(function (data) {
+
+    // Usual D3.js code
+    var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        width = 440 - margin.left - margin.right,
+        height = 200 - margin.top - margin.bottom;
+
+    var parseDate = d3.time.format("%Y").parse;
+
+    var x = d3.time.scale()
+        .range([0, width]);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var area = d3.svg.area()
+        .interpolate("cardinal")
+        .x(function(d) { return x(d.date); })
+        .y0(height)
+        .y1(function(d) { return y(d.volume); });
+
+    var svg = d3.select("#curve").html('').append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    data.forEach(function(d) {
+      d.date = parseDate(d.year);
+    });
+
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.volume; })]);
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "area")
+        .attr("d", area);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Price ($)");
+
+  });
+
+}
+
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      We load the <a href="data/cache/movies.csv">top 1000 movies file</a> which looks like this:
+    </p>
+    <pre># Movies (cleaned)
+
+rank|rating|title     |year
+19  |8.7   |The Matrix|1999
+20  |8.7   |Star Wars |1977</pre>
+    <p>
+      We create a facet counting movies from the top 1000 each year with a <em>d3.js</em> <code>nest()</code> and we display it.
+    </p>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="06.html">&lt; 06</a> | <a href="index.html">Examples list</a> | <a href="08.html">08 &gt;</a>
+</footer>
+
+</body>
+
+</html>
