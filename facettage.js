@@ -222,7 +222,7 @@ var Facettage = (()=>{
           let url = ns.getFacetCacheURL(facet.id);
           d3.text(url).get(function (error, d) {
             if (error) {
-              return console.warn(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, facet, error);
+              return console.error(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, error, facet);
               if (opts && opts.computeAtFail) {
                 if (ns.verbose) {
                   console.log('-> Now trying to compute.');
@@ -278,9 +278,24 @@ var Facettage = (()=>{
         }
 
         facet.download = function () {
-          let data = facet.formatSerialize(facet.serialize(facet.data));
-          let blob = new Blob([data], {type: "application/text;charset=utf-8"});
-          saveAs(blob, ns.getFacetCacheName(facet.id));
+          let data_serialized
+          try {
+            data_serialized = facet.serialize(facet.data);
+          } catch (error) {
+            console.error(`Facet cannot be downloaded because serialization failed: ${id}`, error, facet);
+          }
+
+          let data;
+          try {
+            data = facet.formatSerialize( data_serialized );            
+          } catch (error) {
+            console.error(`Facet cannot be downloaded because format serialization failed: ${id}`, error, facet);
+          }
+
+          if (data) {
+            let blob = new Blob([data], {type: "application/text;charset=utf-8"});
+            saveAs(blob, ns.getFacetCacheName(facet.id));
+          }
         }
 
         ns.facetDictionary[facet.id] = facet;

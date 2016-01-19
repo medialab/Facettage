@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+<script src="assets/FileSaver.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="index.html">Facettage.js examples</a>
+  </header>
+
+  <section>
+    <h1>06 - Why (un-)serialization matters</h1>
+  </section>
+
+  <article>
+    <h3>WITHOUT SERIALIZATION</h3>
+    <button onClick="downloadCacheData_withoutSerialization()">DOWNLOAD CACHE - WITHOUT SERIALIZATION</button>
+    <p>
+      <strong>It generates an error</strong> (see console) because data is not serializable as a CSV.
+    </p>
+    <h3>WITH SERIALIZATION</h3>
+    <button onClick="downloadCacheData_withSerialization()">DOWNLOAD CACHE - WITH SERIALIZATION</button>
+    <p>
+      It works. We should put that file in <code>data/cache/</code> but it is already done.
+    </p>
+    <button onClick="loadAndDisplay()">LOAD FROM CACHE AND DISPLAY</button>
+    <div id="result"></div>
+  </article>
+
+<script type="text/javascript">
+
+/**
+ * Data
+ */
+
+// This data cannot be properly represented by a CSV.
+// Note: representing it by a JSON would be perfectly fine,
+//       but the goal of this example is to display serialization errors
+var actorsAndRoles = [
+  {
+    name: 'George C. Scott',
+    roles: ['Gen. "Buck" Turgidson']
+  },{
+    name: 'Peter Sellers',
+    roles: ['Group Capt. Lionel Mandrake', 'President Merkin Muffley', 'Dr. Strangelove']
+  }
+];
+
+/**
+ * Declare facets
+ */
+
+// Actors, WITHOUT SERIALIZATION
+Facettage.newFacet('actors_without_serialization', {
+  data: actorsAndRoles,
+  type: 'csv'
+});
+
+// Actors, WITH serialization
+Facettage.newFacet('actors_with_serialization', {
+  data: actorsAndRoles,
+  type: 'csv',
+  serialize: function (data) {
+    return data.map(function (d) {
+      // We join multiples roles by a pipe
+      d.roles = d.roles.join('|');
+      return d;
+    })
+  },
+  unserialize: function (data) {
+    return data.map(function (d) {
+      // We split multiple roles by a pipe
+      d.roles = d.roles.split('|');
+      return d;
+    });
+  }
+});
+
+/**
+ * Download cache data
+ */
+
+function downloadCacheData_withoutSerialization() {
+  var fct = Facettage.getFacet('actors_without_serialization');
+  fct.retrieveData( function (data) {
+    fct.download();
+  });
+}
+
+function downloadCacheData_withSerialization() {
+  var fct = Facettage.getFacet('actors_with_serialization');
+  fct.retrieveData( function (data) {
+    fct.download();
+  });
+}
+
+/**
+ * Load and display data
+ */
+
+function loadAndDisplay() {
+  // Using loadData() insteand of retrieveData() forces to download from cache
+  Facettage.getFacet('actors_with_serialization').loadData( function (data) {
+    document.querySelector('#result').innerHTML = '<ul>'
+      + data
+        .map( function (actor) {
+          return '<li><strong>' + actor.name + '</strong>: ' + actor.roles.join(', ') + '</li>';
+        })
+        .join(' ')
+      + '</ul>';
+  });
+}
+
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      We load this data into facet without any <code>serialize()</code> or <code>unserialize()</code> methods:
+    </p>
+    <pre>[{
+  name: 'George C. Scott',
+  roles: [
+    'Gen. "Buck" Turgidson'
+  ]
+},{
+  name: 'Peter Sellers',
+  roles: [
+    'Lionel Mandrake',
+    'President Merkin Muffley',
+    'Dr. Strangelove'
+  ]
+}]</pre>
+    <p>
+      Remark that <strong>it cannot be properly represented as a CSV</strong>. The CSV conversion fails and it triggers an error.
+    </p>
+
+    <h3>Solution</h3>
+    <p>
+      We add a <code>serialize()</code> function to concatenate the list of roles into a <code>string</code>, allowing data to be transformed into a CSV. Of course a <code>unserialize()</code> function is required to do the reverse operation when data is retrieved from cache.
+    </p>
+    <p>
+      <strong>Note:</strong> using <code>type = 'json'</code> would solve the issue. It was for the sake of an example.
+    </p>
+
+    <h3>When using serialization?</h3>
+    <ul>
+      <li>When there is a type ambiguity, like a <code>number</code> that could be a <code>string</code></li>
+      <li>When you have a <strong>Date</strong> or other objects</li>
+      <li>When you want to manage yourself how the data is stored, for instance to <strong>limit file size</strong> (<em>Facettage</em> does not zip data for you)</li>
+    </ul>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="05.html">&lt; 05</a> | <a href="index.html">Examples list</a> | <a href="07.html">07 &gt;</a>
+</footer>
+
+</body>
+
+</html>
