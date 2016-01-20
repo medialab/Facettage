@@ -1,18 +1,17 @@
 Facettage.js
 ============
-**Facet management for backendless datascapes**
 
 > "Information is beautiful, but backends are ugly."                                                                                         
 > _- David Backendless_
 
-### What it does
-Facets are a mix of data and code to obtain them. When you build a data-oriented static website, *Facettage* is a store to manage them: separately configure and retrieve them.
-
-* [DOWNLOAD](https://github.com/medialab/Facettage/blob/master/facettage.js)
+* [DOWNLOAD](https://github.com/medialab/Facettage/blob/master/facettage.js) - [minified](https://github.com/medialab/Facettage/blob/master/facettage.min.js)
 * [EXAMPLES](http://medialab.github.io/Facettage/examples)
 * [API REFERENCE](https://github.com/medialab/Facettage/wiki/Facettage-API-reference)
 
 **MIT License**. Requires [D3.js](https://github.com/mbostock/d3) and [FileSaver.js](https://github.com/eligrey/FileSaver.js) to work properly.
+
+### Facet management for backendless datascapes
+Facets are a mix of data and code to obtain them. When you build a data-oriented static website, *Facettage* is a store to manage them: separately configure and retrieve them.
 
 ### Problems it solves
 You are prototyping a backendless dashboard. Thanks to *D3.js* or other libraries, your javascript is really efficient at filtering and transforming data into multiple facets that you visualize with generic UX modules. However **all the facets are not made equal**. Some are reusable, and you want to keep them in memory, while others are not. Some are lightweight but costly to compute, and you want to cache them, while others are the opposite. *Facettage* solves different facet management issues:
@@ -65,7 +64,7 @@ myFacet.retrieveData( function (data) {
 *Facettage* even stores the facet from you.
 
 ```javascript
-// You can get the facet from just its name
+// Get the facet from its name
 Facettage.getFacet('my-facet')
   .retrieveData( function (data) {
     // Do something with data
@@ -100,11 +99,6 @@ Facettage.getFacet('red-things')
     // Do something with redThings
   });
 ```
-Note that we used the ```getData()``` method instead of ```retrieveData()``` because dependency resolution ensured that the facet would be directly resolved.
-
-### More example
-
-Just look at the source code of [online examples](http://medialab.github.io/Facettage/examples/)
 
 #### Generating the cache
 
@@ -127,3 +121,10 @@ The ```downloadCacheables()``` downloads any facet that:
 Take the downloaded files, put them in the 'data/cache/' folder where *Facettage* will retrieve them. Then edit your code to activate the cache for that facet. Do not erase the ```compute()``` method, it may be useful later if you change your mind.
 
 Note: you can specify additional methods to serialize and unserialize data.
+
+### More
+
+Take a look at the source code of [online examples](http://medialab.github.io/Facettage/examples/).
+
+Also, [api reference](https://github.com/medialab/Facettage/wiki/Facettage-API-reference).
+
