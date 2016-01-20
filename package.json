@@ -1,0 +1,27 @@
+{
+  "name": "facettage",
+  "version": "1.0.0",
+  "description": "Backendless facet management",
+  "main": "facettage.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "babel --presets es2015 ./src/facettage.js -o ./facettage.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medialab/Facettage.git"
+  },
+  "keywords": [
+    "backendless",
+    "facet",
+    "datascape"
+  ],
+  "author": "medialab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/medialab/Facettage/issues"
+  },
+  "homepage": "https://github.com/medialab/Facettage#readme"
+}

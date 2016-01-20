@@ -1,11 +1,9 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-var Facettage = function () {
-
+var Facettage = (()=>{
+  
   // Namespace
-  var ns = {};
+  let ns = {};
 
   // Properties
   ns.facetDictionary = {};
@@ -14,24 +12,24 @@ var Facettage = function () {
   ns.debug = false;
 
   ns.getFacetList = function () {
-    var result = [];
+    let result = [];
 
-    for (var i in ns.facetDictionary) {
-      result.push(ns.facetDictionary[i]);
+    for (let i in ns.facetDictionary) {
+      result.push( ns.facetDictionary[i] );
     }
 
     return result;
-  };
+  }
 
   ns.requireFacet = function (id, opts_) {
-    var f = ns.getFacet(id);
+    let f = ns.getFacet(id);
     if (f) return f;
     return ns.newFacet(id, opts_);
-  };
+  }
 
   ns.getFacet = function (id) {
     return ns.facetDictionary[id];
-  };
+  }
 
   /**
    * Valid ways of creating a facet:
@@ -56,8 +54,8 @@ var Facettage = function () {
    *    })
    */
   ns.newFacet = function (id, opts_) {
-    var opts = opts_ || {};
-    var facet = {};
+    const opts = opts_ || {};
+    let facet = {};
 
     if (id) {
       if (ns.facetDictionary[id] === undefined) {
@@ -71,18 +69,14 @@ var Facettage = function () {
          * NOTE: Loadability, compute method and dependencies have to be managed elsewhere.
          *       The facet object is just a helper to organize the lifecycle.
          */
-        if (opts.data === undefined && !opts.cached && (opts.compute === undefined || typeof opts.compute !== 'function')) {
-          console.warn('Impossible to create facet without data OR cache OR a compute method. id:' + id, facet);
+        if (opts.data === undefined && !opts.cached && (opts.compute === undefined || typeof opts.compute !== 'function') ) {
+          console.warn(`Impossible to create facet without data OR cache OR a compute method. id:${id}`, facet);
           return;
         }
         facet.id = id;
         facet.data = undefined;
-        facet.serialize = function (x) {
-          return x;
-        };
-        facet.unserialize = function (x) {
-          return x;
-        };
+        facet.serialize = x => x;
+        facet.unserialize = x => x;
         facet.formatSerialize = undefined;
         facet.formatUnserialize = undefined;
         facet.ready = false;
@@ -94,26 +88,20 @@ var Facettage = function () {
         facet.type = 'json';
 
         // Check and apply options
-        if (opts.cached) {
-          facet.cached = true;
-        }
-        if (opts.uncacheable) {
-          facet.uncacheable = true;
-        }
-        if (opts.ephemeral) {
-          facet.ephemeral = true;
-        }
+        if (opts.cached) { facet.cached = true; }
+        if (opts.uncacheable) { facet.uncacheable = true; }
+        if (opts.ephemeral) { facet.ephemeral = true; }
 
         if (opts.dependencies) {
           if (Array.isArray(opts.dependencies)) {
             facet.dependencies = opts.dependencies;
           } else {
-            console.warn('Dependencies not added because they are not an array. Facet id:' + id, facet);
+            console.warn(`Dependencies not added because they are not an array. Facet id:${id}`, facet);
           }
         }
 
         if (!Array.isArray(facet.dependencies)) {
-          console.error('Impossible to create facet because dependencies are not an array. id:' + id, facet);
+          console.error(`Impossible to create facet because dependencies are not an array. id:${id}`, facet);
           return;
         }
 
@@ -129,12 +117,8 @@ var Facettage = function () {
               facet.formatSerialize = JSON.stringify;
               break;
             case 'text':
-              facet.formatUnserialize = function (x) {
-                return x;
-              };
-              facet.formatSerialize = function (x) {
-                return x;
-              };
+              facet.formatUnserialize = x => x;
+              facet.formatSerialize = x => x;
               break;
             case 'csv':
               facet.formatUnserialize = d3.csv.parse;
@@ -149,7 +133,7 @@ var Facettage = function () {
               facet.formatSerialize = d3.csv.formatRows;
               break;
             default:
-              console.warn('Unknown type ' + opts.type + ' for facet ' + id);
+              console.warn(`Unknown type ${opts.type} for facet ${id}`)
               break;
           }
         } else {
@@ -158,91 +142,71 @@ var Facettage = function () {
         }
 
         if (opts.serialize) {
-          facet.serialize = opts.serialize;
+          facet.serialize = opts.serialize
         }
 
         if (opts.unserialize) {
-          facet.unserialize = opts.unserialize;
+          facet.unserialize = opts.unserialize
         }
-
-        facet.isReady = function () {
-          return facet.ready;
-        };
-        facet.isCached = function () {
-          return !!facet.cached;
-        };
-        facet.isUncacheable = function () {
-          return !!facet.uncacheable;
-        };
-        facet.getDependencies = function () {
-          return facet.dependencies;
-        };
+        
+        facet.isReady = () => facet.ready;
+        facet.isCached = () => !!facet.cached;
+        facet.isUncacheable = () => !!facet.uncacheable;
+        facet.getDependencies = () => facet.dependencies;
 
         facet.retrieveData = function (callback) {
           ns.clearEphemeralFacets();
           if (facet.isReady()) {
-            if (ns.debug) {
-              console.info('retrieve data: CALL ' + facet.id);
-            }
+            if (ns.debug) { console.info(`retrieve data: CALL ${facet.id}`); }
             facet.callData(callback);
           } else if (facet.isCached()) {
-            if (ns.debug) {
-              console.info('retrieve data: LOAD ' + facet.id);
-            }
-            facet.loadData(callback, { computeAtFail: true });
+            if (ns.debug) { console.info(`retrieve data: LOAD ${facet.id}`); }
+            facet.loadData(callback, {computeAtFail: true});
           } else if (facet.areDependenciesReady()) {
-            if (ns.debug) {
-              console.info('retrieve data: COMPUTE ' + facet.id);
-            }
+            if (ns.debug) { console.info(`retrieve data: COMPUTE ${facet.id}`); }
             facet.computeData(callback);
           } else {
-            var unreadyDependency = facet.dependencies.some(function (id) {
-              var dependencyFacet = ns.getFacet(id);
+            let unreadyDependency = facet.dependencies.some(id => {
+              let dependencyFacet = ns.getFacet(id);
               if (dependencyFacet && dependencyFacet.isReady && dependencyFacet.isReady()) {
                 // Dependency is OK
                 return false;
               } else {
                 // Dependency needs to be retrieved
-                if (ns.debug) {
-                  console.info('retrieve data: RETRIEVE DEPENDENCY ' + dependencyFacet.id + ' of ' + facet.id);
-                }
-                dependencyFacet.retrieveData(function () {
+                if (ns.debug) { console.info(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`); }
+                dependencyFacet.retrieveData(() => {
                   facet.retrieveData(callback);
-                });
+                })
                 return true;
               }
-            });
+            })
           }
-        };
+        }
 
         facet.getData = function () {
           ns.clearEphemeralFacets();
           if (facet.isReady()) {
             return facet.data;
           } else {
-            console.error('Impossible to get data because this facet is not ready: ' + facet.id, facet);
+            console.error(`Impossible to get data because this facet is not ready: ${facet.id}`, facet);
           }
-        };
+        }
 
         facet.clear = function () {
-          if (ns.debug) {
-            console.info('Clear data of ' + facet.id);
-          }
+          if (ns.debug) { console.info(`Clear data of ${facet.id}`); }
           facet.ready = false;
           facet.data = undefined;
-        };
+        }
 
         facet.clearDependencies = function () {
           ns.clearEphemeralFacets();
-          if (ns.debug) {
-            console.info('Clear data dependencies of ' + facet.id);
-          }
-          facet.dependencies.forEach(function (id) {
-            var dependencyFacet = ns.getFacet(id);
+          if (ns.debug) { console.info(`Clear data dependencies of ${facet.id}`); }
+          facet.dependencies.forEach(id => {
+            let dependencyFacet = ns.getFacet(id);
             dependencyFacet.clear();
             dependencyFacet.clearDependencies();
-          });
-        };
+          })
+        }
 
         // Like getData but in an asynchronous fashion
         facet.callData = function (callback) {
@@ -250,21 +214,19 @@ var Facettage = function () {
           if (facet.isReady()) {
             callback(facet.data);
           } else {
-            console.error('Impossible to call data because this facet is not ready: ' + facet.id, facet);
+            console.error(`Impossible to call data because this facet is not ready: ${facet.id}`, facet);
           }
-        };
+        }
 
         facet.loadData = function (callback, opts) {
           ns.clearEphemeralFacets();
-          var url = ns.getFacetCacheURL(facet.id);
+          let url = ns.getFacetCacheURL(facet.id);
           d3.text(url).get(function (error, d) {
             if (error) {
-              return console.error('Facet loading failed for unknown reasons.\nid:' + id + '\nurl:' + url + '\n', error, facet);
+              return console.error(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, error, facet);
               if (opts && opts.computeAtFail) {
-                if (ns.debug) {
-                  console.info('-> Now trying to compute.');
-                }
-                facet.computeData(callback, { withDependencies: true });
+                if (ns.debug) { console.info('-> Now trying to compute.'); }
+                facet.computeData(callback, {withDependencies: true});
               }
             } else {
               facet.data = facet.unserialize(facet.formatUnserialize(d));
@@ -272,21 +234,21 @@ var Facettage = function () {
               callback(facet.data);
             }
           });
-        };
+        }
 
         facet.areDependenciesReady = function () {
-          var ready = true;
+          let ready = true
           // FIXME: stop the forEach once one false found
-          facet.dependencies.forEach(function (id) {
-            var dependencyFacet = ns.getFacet(id);
+          facet.dependencies.forEach(id => {
+            let dependencyFacet = ns.getFacet(id);
             if (dependencyFacet && dependencyFacet.isReady && dependencyFacet.isReady()) {
               // Dependency is OK
             } else {
-                ready = false;
-              }
-          });
+              ready = false;
+            }
+          })
           return ready;
-        };
+        }
 
         facet.computeData = function (callback, opts) {
           ns.clearEphemeralFacets();
@@ -295,67 +257,63 @@ var Facettage = function () {
             facet.ready = true;
             callback(facet.data);
           } else if (opts && opts.withDependencies) {
-            var unreadyDependency = facet.dependencies.some(function (id) {
-              var dependencyFacet = ns.getFacet(id);
+            let unreadyDependency = facet.dependencies.some(id => {
+              let dependencyFacet = ns.getFacet(id);
               if (dependencyFacet && dependencyFacet.isReady && dependencyFacet.isReady()) {
                 // Dependency is OK
                 return false;
               } else {
                 // Dependency needs to be retrieved
-                if (ns.debug) {
-                  console.info('retrieve data: RETRIEVE DEPENDENCY ' + dependencyFacet.id + ' of ' + facet.id);
-                }
-                dependencyFacet.retrieveData(function () {
+                if (ns.debug) { console.info(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`); }
+                dependencyFacet.retrieveData(() => {
                   facet.retrieveData(callback);
-                });
+                })
                 return true;
               }
-            });
+            })
           } else {
-            if (ns.debug) {
-              console.error('Facet not computed because dependencies are not ready. id: ' + id, facet);
-            }
+            if (ns.debug) { console.error(`Facet not computed because dependencies are not ready. id: ${id}`, facet); }
           }
-        };
+        }
 
         facet.download = function () {
-          var data_serialized = undefined;
+          let data_serialized
           try {
             data_serialized = facet.serialize(facet.data);
           } catch (error) {
-            console.error('Facet cannot be downloaded because serialization failed: ' + id, error, facet);
+            console.error(`Facet cannot be downloaded because serialization failed: ${id}`, error, facet);
           }
 
-          var data = undefined;
+          let data;
           try {
-            data = facet.formatSerialize(data_serialized);
+            data = facet.formatSerialize( data_serialized );            
           } catch (error) {
-            console.error('Facet cannot be downloaded because format serialization failed: ' + id, error, facet);
+            console.error(`Facet cannot be downloaded because format serialization failed: ${id}`, error, facet);
           }
 
           if (data) {
-            var blob = new Blob([data], { type: "application/text;charset=utf-8" });
+            let blob = new Blob([data], {type: "application/text;charset=utf-8"});
             saveAs(blob, ns.getFacetCacheName(facet.id));
           }
-        };
+        }
 
         ns.facetDictionary[facet.id] = facet;
         return facet;
       } else {
-        console.warn('Facet not created because its id already exists: ' + id, facet);
+        console.warn(`Facet not created because its id already exists: ${id}`, facet);
       }
     } else {
       console.error('Facet not created because it has no id', facet);
     }
-  };
+  }
 
   ns.deleteFacet = function (id) {
     delete ns.facetDictionary[id];
-  };
+  }
 
   ns.getFacetCacheURL = function (d) {
-    var id = undefined;
-    if ((typeof d === 'undefined' ? 'undefined' : _typeof(d)) == 'object' && d[id]) {
+    let id;
+    if (typeof d == 'object' && d[id]) {
       // d is the facet (though it should be the id...)
       id = d[id];
     } else {
@@ -363,44 +321,42 @@ var Facettage = function () {
     }
 
     if (typeof id === 'string') {
-      var safeId = ns.getFacetCacheName(id);
-      return '' + ns.cacheLocation + safeId;
+      let safeId = ns.getFacetCacheName(id);
+      return `${ns.cacheLocation}${safeId}`;
     } else {
-      console.error('Cannot retrieve cache URL from id ' + id, facet);
+      console.error(`Cannot retrieve cache URL from id ${id}`, facet);
     }
-  };
+  }
 
   ns.getFacetCacheName = function (id) {
     return encodeURIComponent(id);
-  };
+  }
 
   ns.clearEphemeralFacets = function () {
-    ns.getFacetList().forEach(function (facet) {
+    ns.getFacetList().forEach(facet => {
       if (facet.ephemeral) {
         // delete
         facet.clear();
         ns.deleteFacet(facet.id);
       }
     });
-  };
+  }
 
   ns.downloadCacheables = function () {
-    ns.getFacetList().forEach(function (facet) {
+    ns.getFacetList().forEach(facet => {
       if (facet.isReady() && !facet.isCached() && !facet.isUncacheable()) {
         // Keep facet
       } else {
-          // delete
-          facet.clear();
-          ns.deleteFacet(facet.id);
-        }
-    });
-    ns.getFacetList().forEach(function (facet) {
-      if (ns.debug) {
-        console.info('Download cacheable facet ' + facet.id);
+        // delete
+        facet.clear();
+        ns.deleteFacet(facet.id);
       }
-      facet.download();
     });
-  };
+    ns.getFacetList().forEach(facet => {
+      if (ns.debug) { console.info(`Download cacheable facet ${facet.id}`); }
+      facet.download()
+    })
+  }
 
   return ns;
-}();
+})();
