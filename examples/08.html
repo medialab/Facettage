@@ -188,6 +188,11 @@ function updateTimeRange_whileBrushing(extent) {
  */
 
 function displayBrushableCurve(data) {
+
+  data.sort(function (a, b) {
+    return b.year - a.year;
+  })
+
   // Usual D3.js code
   var margin = {top: 20, right: 20, bottom: 30, left: 20},
       width = 440 - margin.left - margin.right,
