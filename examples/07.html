@@ -102,9 +102,9 @@ function retrieveAndDisplay() {
   Facettage.getFacet('movies_yearlyVolume').retrieveData(function (data) {
 
     // Usual D3.js code
-    var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    var margin = {top: 20, right: 20, bottom: 30, left: 20},
         width = 440 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
+        height = 160 - margin.top - margin.bottom;
 
     var parseDate = d3.time.format("%Y").parse;
 

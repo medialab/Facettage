@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Facettage</title>
+
+<!-- Stylefewness from https://github.com/mblode/marx -->
+<link href="css/marx.min.css" rel="stylesheet">
+
+<!-- Required libraries -->
+<script src="assets/d3.min.js"></script>
+
+<!-- FACETTAGE.js -->
+<script src="../facettage.js"></script>
+
+</head>
+
+<body>
+<main>
+
+  <header>
+    <a href="https://github.com/medialab/Facettage"><strong>Facettage.js</strong></a>
+  </header>
+
+  <section>
+    <h1>08 - Dynamic facets</h1>
+    <center>
+      <a href="07.html">&lt; 07</a> | <a href="index.html">Examples list</a> | <a href="09.html">09 &gt;</a>
+    </center>
+  </section>
+
+  <article>
+    <h3>TOP 10 MOVIES BY TIME RANGE</h3>
+    <div id="curve"><em>Loading...</em></div>
+    <center id="curve-info"><em>Select a time range...</em></center>
+    <br>
+    <div id="movies"></div>
+  </article>
+
+  <!-- D3 styles -->
+  <style type="text/css">
+#curve {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: steelblue;
+}
+
+.brush {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+  </style>
+
+<script type="text/javascript">
+
+/**
+ * Initialization
+ */
+
+window.onload = function () {
+  Facettage.getFacet('movies_yearlyVolume').retrieveData(displayBrushableCurve);
+}
+
+/**
+ * Declare facets
+ */
+
+// Clean data
+Facettage.newFacet('movies', {
+  cached: true,
+  // Dependencies and compute() are useless here because of data cache
+  // Note: we recommend always keeping them in case you change your mind
+  dependencies: ['movies.csv'],
+  compute: function () {
+    // Note: we omitted to rewrite the cleanMovieObject() method for code clarity
+    return Facettage.getFacet('movies.csv').getData().map(cleanMovieObject);
+  }
+});
+
+// Yearly volume
+Facettage.newFacet('movies_yearlyVolume', {
+  dependencies: ['movies'],
+  compute: function () {
+    var data = Facettage.getFacet('movies').getData();
+    return d3.nest()
+      // Nest data by year
+      .key(function (d) { return d.year; })
+      // Rollup to get the volume (number of movies per year)
+      .rollup(function (leaves) { return leaves.length })
+      .entries(data)
+        // Transform the nest in an array of explicit objects
+        .map(function (d) {
+          return {year: d.key, volume: d.values};
+        });
+  }
+});
+
+// Top 10 movies - the same as in example 04
+// (we need it when nothing is selected)
+Facettage.newFacet('movies_top10', {
+  dependencies: ['movies'],
+  compute: function () {
+    // Sort movies by rank then keep the first 10
+    var movies = Facettage.getFacet('movies').getData();
+    movies.sort(function (a, b) {
+      return a.rank - b.rank;
+    })
+    return movies.filter( function (movie, i) {
+      return i < 10;
+    });
+  }
+});
+
+// DYNAMIC FACETS
+// Top 10 movies for time range
+function getTop10MoviesFacet(extent) {
+  var minYear = extent[0].getFullYear();
+  var maxYear = extent[1].getFullYear();
+  // Note: We use requireFacet() instead of newFacet() to avoid
+  //       recreating the facet if it is already created
+  // Note 2: The name embeds settings to guarantee name unicity.
+  return Facettage.requireFacet('movies_top10_from_' + minYear + '_to_' + maxYear, {
+    dependencies: ['movies'],
+    compute: function () {
+      var movies = Facettage.getFacet('movies').getData()
+        .filter( function (movie, i) {
+          return movie.year >= minYear && movie.year <= maxYear;
+        });
+      movies.sort(function (a, b) {
+        return a.rank - b.rank;
+      })
+      return movies.filter( function (movie, i) {
+        return i < 10;
+      });
+    },
+    // We usually don't want to cache dynamic facet.
+    // This only matters to how Facettage.downloadCacheables() works
+    uncacheable: true
+    // Note: if these data were bigger, we would consider not storing them
+    //       in browser memory by adding this setting:
+    //       ephemeral: true
+  });
+}
+
+/**
+ * Interactions
+ */
+
+function updateTimeRange(extent) {
+  var data;
+  var minYear;
+  var maxYear;
+  if (extent[0].valueOf() == extent[1].valueOf()) {
+    // Nothing is selected
+    Facettage.getFacet('movies_top10').retrieveData( function (data) {
+      renderTop10Movies(data);
+    });
+  } else {
+    getTop10MoviesFacet(extent).retrieveData( function (data) {
+      renderTop10Movies(data);
+    });
+  }
+  
+}
+
+function updateTimeRange_whileBrushing(extent) {
+  renderBrushableCurveInfo(extent);
+}
+
+/**
+ * Data processing and display functions
+ */
+
+function displayBrushableCurve(data) {
+  // Usual D3.js code
+  var margin = {top: 20, right: 20, bottom: 30, left: 20},
+      width = 440 - margin.left - margin.right,
+      height = 160 - margin.top - margin.bottom;
+
+  var parseDate = d3.time.format("%Y").parse;
+
+  var x = d3.time.scale()
+      .range([0, width]);
+
+  var y = d3.scale.linear()
+      .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+  var brush = d3.svg.brush()
+      .x(x)
+      .on("brush", brushed)
+      .on("brushend", brushEnded);
+
+  var area = d3.svg.area()
+      .interpolate("cardinal")
+      .x(function(d) { return x(d.date); })
+      .y0(height)
+      .y1(function(d) { return y(d.volume); });
+
+  var svg = d3.select("#curve").html('').append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.year);
+  });
+
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain([0, d3.max(data, function(d) { return d.volume; })]);
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Top 1000 movies");
+
+  svg.append("g")
+      .attr("class", "x brush")
+      .call(brush)
+    .selectAll("rect")
+      .attr("y", -6)
+      .attr("height", height + 7);
+
+  function brushed() {
+    var extent = brush.extent();
+    updateTimeRange_whileBrushing(extent);
+  }
+
+  function brushEnded() {
+    var extent = brush.extent();
+    updateTimeRange(extent);
+  }
+
+}
+
+function renderBrushableCurveInfo(extent) {
+  var minYear;
+  var maxYear;
+  if (extent[0].valueOf() == extent[1].valueOf()) {
+    // Nothing selected
+    document.querySelector('#curve-info').innerHTML = 'No selection';
+  } else {
+    // Something selected
+    minYear = extent[0].getFullYear();
+    maxYear = extent[1].getFullYear();
+    document.querySelector('#curve-info').innerHTML = '<em>Selection: from ' + minYear + ' to ' + maxYear + '</em>';
+  }
+}
+
+function renderTop10Movies(data) {
+  var data_html_rows = data
+    .map( function (movie) {
+      return '<tr><td>' + movie.rank + '</td><td>' + 
+        movie.title + '</td><td>' + movie.year + '</td><td>' + 
+        movie.rating + '</td></tr>';
+    }).join('');
+  var header_row = '<tr><th>Rank</th><th>Movie</th><th>Year</th><th>Rating</th></tr>';
+  document.querySelector('#movies').innerHTML = '<table>' + header_row +data_html_rows + '</table>';
+}
+
+</script>
+
+  <aside>
+    <h3>Explanations</h3>
+    <p>
+      <strong>1. </strong> We create a facet that loads the <a href="data/cache/movies.csv">top 1000 movies file</a>.
+    </p>
+    <p>
+      <strong>2.</strong> We create a facet counting movies from the top 1000 each year with a <em>d3.js</em> <code>nest()</code> and we display it as a "brushable" curve (it allows selecting a time range).
+    </p>
+    <p>
+      <strong>3.</strong> We create a facet generator that creates a specific facet for a given time range. This facet computes the top 10 movies over the period.
+    </p>
+    <p>
+      <strong>4.</strong> Interactions lead to resolving facets and their dependencies in order to display data.
+    </p>
+    <h3>NOTES</h3>
+    <ul>
+      <li>Dynamic facets and their data are stored in memory. Here it is worth it since data are small and we avoid unnecessary recalculations. However sometimes dynamic facets generate lots of data which may overflow memory. You can avoid keeping them in memory by setting them to <code>ephemeral: true</code></li>
+    </ul>
+  </aside>
+
+</main>
+
+<footer>
+  <a href="07.html">&lt; 07</a> | <a href="index.html">Examples list</a> | <a href="09.html">09 &gt;</a>
+</footer>
+
+</body>
+
+</html>
