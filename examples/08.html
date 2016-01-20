@@ -24,13 +24,13 @@
 
   <header>
     <a href="https://github.com/medialab/Facettage"><strong>Facettage.js</strong></a>
+    <center>
+      <a href="07.html">&lt; 07</a> | <a href="index.html">Examples list</a> | <a href="09.html">09 &gt;</a>
+    </center>
   </header>
 
   <section>
     <h1>08 - Dynamic facets</h1>
-    <center>
-      <a href="07.html">&lt; 07</a> | <a href="index.html">Examples list</a> | <a href="09.html">09 &gt;</a>
-    </center>
   </section>
 
   <article>
@@ -311,10 +311,14 @@ function renderTop10Movies(data) {
     <p>
       <strong>4.</strong> Interactions lead to resolving facets and their dependencies in order to display data.
     </p>
-    <h3>NOTES</h3>
-    <ul>
-      <li>Dynamic facets and their data are stored in memory. Here it is worth it since data are small and we avoid unnecessary recalculations. However sometimes dynamic facets generate lots of data which may overflow memory. You can avoid keeping them in memory by setting them to <code>ephemeral: true</code></li>
-    </ul>
+    <h3>NOTE</h3>
+    <p>
+      Dynamic facets and their data are stored in memory. Here it is worth it since data are small and we avoid unnecessary recalculations. 
+    </p>
+    <p>
+      However sometimes dynamic facets generate lots of data which may overflow memory.
+      You can avoid keeping them in memory by setting them to <code>ephemeral: true</code>
+    </p>
   </aside>
 
 </main>
