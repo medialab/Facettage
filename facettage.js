@@ -8,7 +8,8 @@ var Facettage = (()=>{
   // Properties
   ns.facetDictionary = {};
   // TODO: implement a config setting for cache location
-  ns.cacheLocation = 'data/cache/'
+  ns.cacheLocation = 'data/cache/';
+  ns.debug = false;
 
   ns.getFacetList = function () {
     let result = [];
@@ -69,7 +70,7 @@ var Facettage = (()=>{
          *       The facet object is just a helper to organize the lifecycle.
          */
         if (opts.data === undefined && !opts.cached && (opts.compute === undefined || typeof opts.compute !== 'function') ) {
-          console.log(`Impossible to create facet without data OR cache OR a compute method. id:${id}`, facet);
+          console.warn(`Impossible to create facet without data OR cache OR a compute method. id:${id}`, facet);
           return;
         }
         facet.id = id;
@@ -95,12 +96,12 @@ var Facettage = (()=>{
           if (Array.isArray(opts.dependencies)) {
             facet.dependencies = opts.dependencies;
           } else {
-            console.log(`Dependencies not added because they are not an array. Facet id:${id}`, facet);
+            console.warn(`Dependencies not added because they are not an array. Facet id:${id}`, facet);
           }
         }
 
         if (!Array.isArray(facet.dependencies)) {
-          console.log(`Impossible to create facet because dependencies are not an array. id:${id}`, facet);
+          console.error(`Impossible to create facet because dependencies are not an array. id:${id}`, facet);
           return;
         }
 
@@ -132,7 +133,7 @@ var Facettage = (()=>{
               facet.formatSerialize = d3.csv.formatRows;
               break;
             default:
-              console.log(`Unknown type ${opts.type} for facet ${id}`)
+              console.warn(`Unknown type ${opts.type} for facet ${id}`)
               break;
           }
         } else {
@@ -156,13 +157,13 @@ var Facettage = (()=>{
         facet.retrieveData = function (callback) {
           ns.clearEphemeralFacets();
           if (facet.isReady()) {
-            console.log(`retrieve data: CALL ${facet.id}`);
+            if (ns.debug) { console.info(`retrieve data: CALL ${facet.id}`); }
             facet.callData(callback);
           } else if (facet.isCached()) {
-            console.log(`retrieve data: LOAD ${facet.id}`);
+            if (ns.debug) { console.info(`retrieve data: LOAD ${facet.id}`); }
             facet.loadData(callback, {computeAtFail: true});
           } else if (facet.areDependenciesReady()) {
-            console.log(`retrieve data: COMPUTE ${facet.id}`);
+            if (ns.debug) { console.info(`retrieve data: COMPUTE ${facet.id}`); }
             facet.computeData(callback);
           } else {
             let unreadyDependency = facet.dependencies.some(id => {
@@ -172,7 +173,7 @@ var Facettage = (()=>{
                 return false;
               } else {
                 // Dependency needs to be retrieved
-                console.log(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`);
+                if (ns.debug) { console.info(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`); }
                 dependencyFacet.retrieveData(() => {
                   facet.retrieveData(callback);
                 })
@@ -187,19 +188,19 @@ var Facettage = (()=>{
           if (facet.isReady()) {
             return facet.data;
           } else {
-            console.log(`Impossible to get data because this facet is not ready: ${facet.id}`, facet);
+            console.error(`Impossible to get data because this facet is not ready: ${facet.id}`, facet);
           }
         }
 
         facet.clear = function () {
-          console.log(`Clear data of ${facet.id}`);
+          if (ns.debug) { console.info(`Clear data of ${facet.id}`); }
           facet.ready = false;
           facet.data = undefined;
         }
 
         facet.clearDependencies = function () {
           ns.clearEphemeralFacets();
-          console.log(`Clear data dependencies of ${facet.id}`);
+          if (ns.debug) { console.info(`Clear data dependencies of ${facet.id}`); }
           facet.dependencies.forEach(id => {
             let dependencyFacet = ns.getFacet(id);
             dependencyFacet.clear();
@@ -213,7 +214,7 @@ var Facettage = (()=>{
           if (facet.isReady()) {
             callback(facet.data);
           } else {
-            console.log(`Impossible to call data because this facet is not ready: ${facet.id}`, facet);
+            console.error(`Impossible to call data because this facet is not ready: ${facet.id}`, facet);
           }
         }
 
@@ -224,9 +225,7 @@ var Facettage = (()=>{
             if (error) {
               return console.error(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, error, facet);
               if (opts && opts.computeAtFail) {
-                if (ns.verbose) {
-                  console.log('-> Now trying to compute.');
-                }
+                if (ns.debug) { console.info('-> Now trying to compute.'); }
                 facet.computeData(callback, {withDependencies: true});
               }
             } else {
@@ -265,7 +264,7 @@ var Facettage = (()=>{
                 return false;
               } else {
                 // Dependency needs to be retrieved
-                console.log(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`);
+                if (ns.debug) { console.info(`retrieve data: RETRIEVE DEPENDENCY ${dependencyFacet.id} of ${facet.id}`); }
                 dependencyFacet.retrieveData(() => {
                   facet.retrieveData(callback);
                 })
@@ -273,7 +272,7 @@ var Facettage = (()=>{
               }
             })
           } else {
-            console.log(`Facet not computed because dependencies are not ready. id: ${id}`, facet);
+            if (ns.debug) { console.error(`Facet not computed because dependencies are not ready. id: ${id}`, facet); }
           }
         }
 
@@ -301,10 +300,10 @@ var Facettage = (()=>{
         ns.facetDictionary[facet.id] = facet;
         return facet;
       } else {
-        console.log(`Facet not created because its id already exists: ${id}`, facet);
+        console.warn(`Facet not created because its id already exists: ${id}`, facet);
       }
     } else {
-      console.log('Facet not created because it has no id', facet);
+      console.error('Facet not created because it has no id', facet);
     }
   }
 
@@ -325,7 +324,7 @@ var Facettage = (()=>{
       let safeId = ns.getFacetCacheName(id);
       return `${ns.cacheLocation}${safeId}`;
     } else {
-      console.log(`Cannot retrieve cache URL from id ${id}`, facet);
+      console.error(`Cannot retrieve cache URL from id ${id}`, facet);
     }
   }
 
@@ -354,7 +353,7 @@ var Facettage = (()=>{
       }
     });
     ns.getFacetList().forEach(facet => {
-      console.log(`Download cacheable facet ${facet.id}`)
+      if (ns.debug) { console.info(`Download cacheable facet ${facet.id}`); }
       facet.download()
     })
   }
