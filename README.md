@@ -6,7 +6,11 @@ Facettage.js
 > _- David Backendless_
 
 ### What it does
+You spend time to write data facets, which are algorithms as well as data, where do you store them?
+
 When you build a data-oriented static website, *Facettage* organizes how to access the different facets of data. You describe the facets and it helps you retrieve, compute and cache them.
+
+[Online examples](http://medialab.github.io/Facettage/examples)
 
 ### Problems it solves
 **Imagine you have to build a backendless dashboard.** Thanks to *D3.js* or other libraries, your javascript is really efficient at filtering and transforming data into multiple facets that you visualize with generic UX modules. However **all the facets are not made equal**. Some are reusable, and you want to keep them in memory, while others are not. Some are lightweight but costly to compute, and you want to cache them, while others are the opposite. *Facettage* solves different facet management issues:
@@ -23,6 +27,7 @@ When you build a data-oriented static website, *Facettage* organizes how to acce
 Basically, you describe your facets and their properties before accessing them when you need it. With the proper configuration, *Facettage* relieves you from the burden as wondering how you should access each different facet.
 
 #### 1. Create a facet
+There are 3 ways to create a new facet:
 ```javascript
 // Facet from data
 var facet = Facettage.newFacet('jedi', {
@@ -85,6 +90,7 @@ Facettage.getFacet('red-things')
 Note that we used the ```getData()``` method instead of ```retrieveData()``` because dependency resolution ensured that the facet would be directly resolved.
 
 ## A complete example with recommandations
+(Also look at [online examples](http://medialab.github.io/Facettage/examples) )
 ```javascript
 // DECLARE FACETS
 // The 'root' data consists of a list of countries from a JSON file
