@@ -1,6 +1,9 @@
 Facettage.js
 ============
 
+### Facet management for backendless datascapes
+Facets are a mix of data and scripts. *Facettage* is a facet store that leverages this data/script duality: configure facets as memory structures and retrieve data like from a store.
+
 > "Information is beautiful, but backends are ugly."                                                                                         
 > _- David Backendless_
 
@@ -9,9 +12,6 @@ Facettage.js
 * [API REFERENCE](https://github.com/medialab/Facettage/wiki/Facettage-API-reference)
 
 **MIT License**. Requires [D3.js](https://github.com/mbostock/d3) and [FileSaver.js](https://github.com/eligrey/FileSaver.js) to work properly.
-
-### Facet management for backendless datascapes
-Facets are a mix of data and code to obtain them. When you build a data-oriented static website, *Facettage* is a store to manage them: separately configure and retrieve them.
 
 ### Problems it solves
 You are prototyping a backendless dashboard. Thanks to *D3.js* or other libraries, your javascript is really efficient at filtering and transforming data into multiple facets that you visualize with generic UX modules. However **all the facets are not made equal**. Some are reusable, and you want to keep them in memory, while others are not. Some are lightweight but costly to compute, and you want to cache them, while others are the opposite. *Facettage* solves different facet management issues:
