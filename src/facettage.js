@@ -223,10 +223,12 @@ var Facettage = (()=>{
           let url = ns.getFacetCacheURL(facet.id);
           d3.text(url).get(function (error, d) {
             if (error) {
-              return console.error(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, error, facet);
-              if (opts && opts.computeAtFail) {
+              console.error(`Facet loading failed for unknown reasons.\nid:${id}\nurl:${url}\n`, error, facet);
+              if (opts && opts.computeAtFail && facet.compute) {
                 if (ns.debug) { console.info('-> Now trying to compute.'); }
                 facet.computeData(callback, {withDependencies: true});
+              } else {
+                callback();
               }
             } else {
               facet.data = facet.unserialize(facet.formatUnserialize(d));
